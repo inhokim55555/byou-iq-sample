@@ -1,0 +1,151 @@
+/* BYOU IQ Material 3 monochrome system and component tokens */
+:root {
+  color-scheme: light;
+  --md-sys-color-campaign-active-indicator: #77d077;
+
+  /* Reference typography roles make the whole UI themeable without rewriting components. */
+  --md-ref-typeface-plain: var(--brannan-font, "Brannan Neue Haas Display", "Helvetica Neue", Helvetica, Arial, sans-serif);
+  --md-ref-typeface-brand: var(--md-ref-typeface-plain);
+  --md-sys-typescale-headline-large-size: 32px;
+  --md-sys-typescale-headline-large-line-height: 40px;
+  --md-sys-typescale-title-large-size: 22px;
+  --md-sys-typescale-title-large-line-height: 28px;
+  --md-sys-typescale-title-medium-size: 16px;
+  --md-sys-typescale-title-medium-line-height: 24px;
+  --md-sys-typescale-body-large-size: 16px;
+  --md-sys-typescale-body-medium-size: 14px;
+  --md-sys-typescale-label-large-size: 14px;
+
+  /* M3 semantic roles, deliberately adapted to BYOU IQ's black/white/gray brand. */
+  --md-sys-color-primary: #000000;
+  --md-sys-color-on-primary: #ffffff;
+  --md-sys-color-primary-container: #e5e5e5;
+  --md-sys-color-on-primary-container: #242424;
+  --md-sys-color-secondary: #4c4c4c;
+  --md-sys-color-on-secondary: #ffffff;
+  --md-sys-color-secondary-container: #e9e9e9;
+  --md-sys-color-on-secondary-container: #292929;
+  --md-sys-color-tertiary: #5b5b5b;
+  --md-sys-color-on-tertiary: #ffffff;
+  --md-sys-color-tertiary-container: #eeeeee;
+  --md-sys-color-on-tertiary-container: #303030;
+  --md-sys-color-error: #3b3b3b;
+  --md-sys-color-on-error: #ffffff;
+  --md-sys-color-error-container: #e9e9e9;
+  --md-sys-color-on-error-container: #242424;
+  --md-sys-color-surface: #ffffff;
+  --md-sys-color-surface-dim: #dedede;
+  --md-sys-color-surface-bright: #ffffff;
+  --md-sys-color-surface-container-lowest: #ffffff;
+  --md-sys-color-surface-container-low: #f8f8f8;
+  --md-sys-color-surface-container: #f2f2f2;
+  --md-sys-color-surface-container-high: #ececec;
+  --md-sys-color-surface-container-highest: #e5e5e5;
+  --md-sys-color-on-surface: #000000;
+  --md-sys-color-on-surface-variant: #505050;
+  --md-sys-color-outline: #737373;
+  --md-sys-color-outline-variant: #c8c8c8;
+  --md-sys-color-inverse-surface: #303030;
+  --md-sys-color-inverse-on-surface: #f5f5f5;
+  --md-sys-color-inverse-primary: #e5e5e5;
+  --md-sys-color-scrim: #000000;
+  --md-sys-color-shadow: #000000;
+
+  /* Small semantic state layers, kept quiet for a high-density work surface. */
+  --md-sys-state-hover: rgb(27 27 27 / 8%);
+  --md-sys-state-focus: rgb(27 27 27 / 10%);
+  --md-sys-state-pressed: rgb(27 27 27 / 12%);
+  --md-sys-state-dragged: rgb(27 27 27 / 16%);
+
+  /* Eight-pixel baseline, with 2/4/6dp half-step values for compact layouts. */
+  --md-sys-spacing-025: 2px;
+  --md-sys-spacing-050: 4px;
+  --md-sys-spacing-075: 6px;
+  --md-sys-spacing-100: 8px;
+  --md-sys-spacing-150: 12px;
+  --md-sys-spacing-200: 16px;
+  --md-sys-spacing-300: 24px;
+  --md-sys-spacing-400: 32px;
+  --md-sys-spacing-500: 40px;
+  --md-sys-spacing-600: 48px;
+  --md-sys-spacing-1: 4px;
+  --md-sys-spacing-2: 8px;
+  --md-sys-spacing-3: 12px;
+  --md-sys-spacing-4: 16px;
+  --md-sys-spacing-6: 24px;
+  --md-sys-spacing-8: 32px;
+  --md-sys-spacing-10: 40px;
+  --md-sys-spacing-12: 48px;
+
+  /* Shape is role-based: compact controls, grouped surfaces, modal surfaces. */
+  --md-sys-shape-corner-none: 0px;
+  --md-sys-shape-corner-extra-small: 4px;
+  --md-sys-shape-corner-small: 8px;
+  --md-sys-shape-corner-medium: 12px;
+  --md-sys-shape-corner-large: 16px;
+  --md-sys-shape-corner-extra-large: 28px;
+  --md-sys-shape-corner-full: 999px;
+
+  /* Shadows are reserved for overlays and floating controls. */
+  --md-sys-elevation-level0: none;
+  --md-sys-elevation-level1: 0 1px 2px rgb(0 0 0 / 12%), 0 1px 3px 1px rgb(0 0 0 / 7%);
+  --md-sys-elevation-level2: 0 1px 3px rgb(0 0 0 / 18%), 0 2px 6px 2px rgb(0 0 0 / 10%);
+  --md-sys-elevation-level3: 0 4px 8px 3px rgb(0 0 0 / 12%), 0 1px 3px rgb(0 0 0 / 18%);
+
+  /* Local motion tokens: quick utility feedback and restrained overlay entry. */
+  --md-sys-motion-easing-standard: cubic-bezier(0.2, 0, 0, 1);
+  --md-sys-motion-duration-short: 120ms;
+  --md-sys-motion-duration-standard: 180ms;
+  --md-sys-motion-duration-overlay: 250ms;
+  --md-sys-motion-duration-view: 200ms;
+  --md-comp-action-primary-hover: #333333;
+}
+
+:root[data-theme="dark"],
+:root[data-color-scheme="dark"] {
+  color-scheme: dark;
+  --md-sys-color-primary: #f2f2f2;
+  --md-comp-action-primary-hover: #e5e5e5;
+  --md-sys-color-on-primary: #1b1b1b;
+  --md-sys-color-primary-container: #3d3d3d;
+  --md-sys-color-on-primary-container: #f3f3f3;
+  --md-sys-color-secondary: #d2d2d2;
+  --md-sys-color-on-secondary: #242424;
+  --md-sys-color-secondary-container: #393939;
+  --md-sys-color-on-secondary-container: #f0f0f0;
+  --md-sys-color-tertiary: #c2c2c2;
+  --md-sys-color-on-tertiary: #242424;
+  --md-sys-color-tertiary-container: #333333;
+  --md-sys-color-on-tertiary-container: #eeeeee;
+  --md-sys-color-error: #e4e4e4;
+  --md-sys-color-on-error: #242424;
+  --md-sys-color-error-container: #3b3b3b;
+  --md-sys-color-on-error-container: #f0f0f0;
+  --md-sys-color-surface: #1b1b1b;
+  --md-sys-color-surface-dim: #111111;
+  --md-sys-color-surface-bright: #393939;
+  --md-sys-color-surface-container-lowest: #151515;
+  --md-sys-color-surface-container-low: #202020;
+  --md-sys-color-surface-container: #262626;
+  --md-sys-color-surface-container-high: #2e2e2e;
+  --md-sys-color-surface-container-highest: #383838;
+  --md-sys-color-on-surface: #f2f2f2;
+  --md-sys-color-on-surface-variant: #cccccc;
+  --md-sys-color-outline: #aaaaaa;
+  --md-sys-color-outline-variant: #555555;
+  --md-sys-color-inverse-surface: #e5e5e5;
+  --md-sys-color-inverse-on-surface: #202020;
+  --md-sys-color-inverse-primary: #333333;
+  --md-sys-color-scrim: #000000;
+  --md-sys-color-shadow: #000000;
+  --md-sys-state-hover: rgb(255 255 255 / 8%);
+  --md-sys-state-focus: rgb(255 255 255 / 10%);
+  --md-sys-state-pressed: rgb(255 255 255 / 12%);
+  --md-sys-state-dragged: rgb(255 255 255 / 16%);
+  --good-ink: #e0e0e0;
+  --good-bg: var(--md-sys-color-surface-container);
+  --warn-ink: #e0e0e0;
+  --warn-bg: var(--md-sys-color-surface-container-high);
+  --neutral-ink: #cccccc;
+  --neutral-bg: var(--md-sys-color-surface-container-low);
+}

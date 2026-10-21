@@ -1,0 +1,326 @@
+/* Local comparison theme. The live app remains on the approved monochrome scheme. */
+:root[data-theme="botanical"] {
+  --md-sys-color-primary: #2f6654;
+  --md-comp-action-primary-hover: #245441;
+  --md-sys-color-on-primary: #ffffff;
+  --md-sys-color-primary-container: #d6ead9;
+  --md-sys-color-on-primary-container: #173c2d;
+  --md-sys-color-secondary: #58633e;
+  --md-sys-color-on-secondary: #ffffff;
+  --md-sys-color-secondary-container: #e2ebc5;
+  --md-sys-color-on-secondary-container: #293515;
+  --md-sys-color-tertiary: #80553b;
+  --md-sys-color-on-tertiary: #ffffff;
+  --md-sys-color-tertiary-container: #ffddc7;
+  --md-sys-color-on-tertiary-container: #412511;
+  --md-sys-color-error: #92382e;
+  --md-sys-color-on-error: #ffffff;
+  --md-sys-color-error-container: #ffdad3;
+  --md-sys-color-on-error-container: #4e1711;
+  --md-sys-color-surface: #fffaf2;
+  --md-sys-color-surface-dim: #dddccc;
+  --md-sys-color-surface-bright: #fffcf7;
+  --md-sys-color-surface-container-lowest: #ffffff;
+  --md-sys-color-surface-container-low: #f5f5e7;
+  --md-sys-color-surface-container: #efefdf;
+  --md-sys-color-surface-container-high: #e7e9d6;
+  --md-sys-color-surface-container-highest: #dfe4cf;
+  --md-sys-color-on-surface: #26362c;
+  --md-sys-color-on-surface-variant: #52604e;
+  --md-sys-color-outline: #75826b;
+  --md-sys-color-outline-variant: #c7cfb8;
+  --md-sys-color-inverse-surface: #293d31;
+  --md-sys-color-inverse-on-surface: #f3f6e8;
+  --md-sys-state-hover: rgb(47 102 84 / 8%);
+  --md-sys-state-focus: rgb(47 102 84 / 10%);
+  --md-sys-state-pressed: rgb(47 102 84 / 12%);
+  --md-sys-state-dragged: rgb(47 102 84 / 16%);
+  --md-ref-typeface-plain: "BYOU Manrope", "Segoe UI", sans-serif;
+  --md-ref-typeface-brand: var(--md-ref-typeface-plain);
+  --md-sys-typescale-body-font: var(--md-ref-typeface-plain);
+  --md-sys-typescale-heading-font: var(--md-ref-typeface-brand);
+  --brannan-font: var(--md-ref-typeface-plain);
+}
+/* The comparison selector appears only in the fabricated local workspace. */
+#app .theme-preview {
+  display: flex; justify-content: flex-end; align-items: center; gap: 12px;
+  margin: 0 0 24px; font: 500 12px/1.5 var(--md-ref-typeface-plain, inherit);
+  color: var(--md-sys-color-on-surface-variant);
+}
+#app .theme-preview > div { display: flex; padding: 4px; gap: 4px; border: 1px solid var(--md-sys-color-outline-variant); border-radius: 999px; }
+#app .theme-preview a { padding: 8px 14px; border-radius: 999px; color: var(--md-sys-color-on-surface); text-decoration: none; }
+#app .theme-preview a[aria-current] { color: var(--md-sys-color-on-secondary-container); background: var(--md-sys-color-secondary-container); }
+#app .theme-preview a:hover { box-shadow: inset 0 0 0 1px var(--md-sys-color-outline); }
+#app .theme-preview a:focus-visible { outline: 3px solid var(--md-sys-color-primary); outline-offset: 2px; }
+:root[data-theme="botanical"] #app :is(h1, h2, h3, h4, h5, h6) {
+  font-family: var(--md-ref-typeface-brand);
+  font-weight: 600;
+  letter-spacing: -.02em;
+}
+:root[data-theme="botanical"] #app h1 { color: var(--md-sys-color-primary); }
+:root[data-theme="botanical"] #app .ops-notice:not(.ops-error) {
+  background: var(--md-sys-color-tertiary-container); color: var(--md-sys-color-on-tertiary-container); border-color: transparent;
+}
+:root[data-theme="botanical"] #app .ops-table thead th { background: var(--md-sys-color-surface-container-high); }
+:root[data-theme="botanical"] #app .ops-tag { background: var(--md-sys-color-primary-container); color: var(--md-sys-color-on-primary-container); }
+@media (max-width: 620px) {
+  #app .theme-preview { justify-content: space-between; gap: 8px; margin-bottom: 20px; }
+  #app .theme-preview a { display: inline-flex; align-items: center; min-height: 44px; padding-block: 6px; }
+}
+
+/* Botanical spring feedback: a small CSS approximation of M3's spring motion.
+   Geometry may overshoot; opacity and color stay on standard, non-overshooting easing. */
+:root[data-theme="botanical"] {
+  --byou-motion-effects-easing: cubic-bezier(0.2, 0, 0, 1);
+  /* Fallback for browsers without CSS linear() timing functions. */
+  --byou-motion-spring-fast: cubic-bezier(0.2, 1.16, 0.3, 1);
+  --byou-motion-spring-default: cubic-bezier(0.22, 1.2, 0.36, 1);
+}
+@supports (animation-timing-function: linear(0, 1)) {
+  :root[data-theme="botanical"] {
+    --byou-motion-spring-fast: linear(0, 0.25 10%, 0.7 27%, 1.045 47%, 1.012 66%, 0.994 83%, 1.002 94%, 1 100%);
+    --byou-motion-spring-default: linear(0, 0.16 8%, 0.55 23%, 0.94 41%, 1.055 57%, 1.018 73%, 0.99 87%, 1.002 96%, 1 100%);
+  }
+}
+
+@keyframes byou-botanical-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes byou-botanical-pop-in {
+  from { transform: translateY(-5px) scale(.96); }
+  to { transform: translateY(0) scale(1); }
+}
+@keyframes byou-botanical-sheet-enter {
+  from { transform: translateX(18px); }
+  to { transform: translateX(0); }
+}
+@keyframes byou-botanical-sheet-enter-mobile {
+  from { transform: translateY(18px); }
+  to { transform: translateY(0); }
+}
+@keyframes byou-botanical-dialog-enter {
+  from { transform: scale(.96); }
+  to { transform: scale(1); }
+}
+@keyframes byou-botanical-calendar-enter {
+  from { transform: translate(-50%, -50%) scale(.96); }
+  to { transform: translate(-50%, -50%) scale(1); }
+}
+
+/* Menus reveal as one calm surface; their text never inherits the spring easing. */
+:root[data-theme="botanical"] body #app .ops-creator-popover[popover]:popover-open,
+:root[data-theme="botanical"] body #overlay-root .ops-creator-popover[popover]:popover-open,
+:root[data-theme="botanical"] body #campaign-operations-overlay .ops-creator-popover[popover]:popover-open,
+:root[data-theme="botanical"] body #app .manual-choice-dropdown[open] {
+  animation: byou-botanical-fade-in 170ms var(--byou-motion-effects-easing) both,
+    byou-botanical-pop-in 440ms var(--byou-motion-spring-default) both;
+}
+
+/* Animate only newly inserted overlays. The app marks first renders so typing and
+   other innerHTML refreshes do not replay the entry motion. */
+:root[data-theme="botanical"] body #overlay-root .drawer[data-m3-enter],
+:root[data-theme="botanical"] body #campaign-operations-overlay .drawer[data-m3-enter] {
+  animation: byou-botanical-fade-in 180ms var(--byou-motion-effects-easing) both,
+    byou-botanical-sheet-enter 480ms var(--byou-motion-spring-default) both;
+}
+:root[data-theme="botanical"] body #app .modal[data-m3-enter],
+:root[data-theme="botanical"] body #overlay-root .modal[data-m3-enter],
+:root[data-theme="botanical"] body #campaign-operations-overlay .modal[data-m3-enter],
+:root[data-theme="botanical"] body dialog[open][data-m3-enter] {
+  animation: byou-botanical-fade-in 170ms var(--byou-motion-effects-easing) both,
+    byou-botanical-dialog-enter 460ms var(--byou-motion-spring-default) both;
+}
+:root[data-theme="botanical"] body #app .cal-dialog[data-m3-enter] {
+  animation: byou-botanical-fade-in 170ms var(--byou-motion-effects-easing) both,
+    byou-botanical-calendar-enter 440ms var(--byou-motion-spring-default) both;
+}
+:root[data-theme="botanical"] body :is(.drawer-backdrop, .modal-backdrop, .cal-backdrop)[data-m3-enter] {
+  animation: byou-botanical-fade-in 180ms var(--byou-motion-effects-easing) both;
+}
+@media (max-width: 620px) {
+  :root[data-theme="botanical"] body #overlay-root .drawer[data-m3-enter],
+  :root[data-theme="botanical"] body #campaign-operations-overlay .drawer[data-m3-enter] {
+    animation: byou-botanical-fade-in 180ms var(--byou-motion-effects-easing) both,
+      byou-botanical-sheet-enter-mobile 480ms var(--byou-motion-spring-default) both;
+  }
+}
+
+/* Press feedback uses transforms, so it cannot push neighboring content around. */
+:root[data-theme="botanical"] body :is(#app, #overlay-root, #campaign-operations-overlay) button:not(:disabled) {
+  transition-property: background-color, border-color, color, box-shadow, transform, border-radius;
+  transition-duration: 120ms, 120ms, 120ms, 120ms, 360ms, 360ms;
+  transition-timing-function: var(--byou-motion-effects-easing), var(--byou-motion-effects-easing),
+    var(--byou-motion-effects-easing), var(--byou-motion-effects-easing),
+    var(--byou-motion-spring-fast), var(--byou-motion-spring-fast);
+  transform-origin: center;
+}
+:root[data-theme="botanical"] body :is(#app, #overlay-root, #campaign-operations-overlay) button:active:not(:disabled) {
+  transform: scale(.97, .985);
+}
+:root[data-theme="botanical"] body :is(#app, #overlay-root, #campaign-operations-overlay) .ops-creator-popover .button:active:not(:disabled) {
+  transform: scale(.98, .99);
+}
+:root[data-theme="botanical"] body #app .cl-brand-filters .cl-filter-toggle {
+  border-radius: var(--md-sys-shape-corner-medium);
+}
+:root[data-theme="botanical"] body #app .cl-brand-filters .cl-filter-toggle[aria-expanded="true"] {
+  border-radius: var(--md-sys-shape-corner-large);
+}
+
+/* Keep the card name readable above its actions in narrow roster cards. */
+:root[data-theme="botanical"] body #app .ops-card .ops-card-name-line {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  align-items: start;
+  gap: var(--md-sys-spacing-1);
+}
+:root[data-theme="botanical"] body #app .ops-card .ops-card-name-line > .ops-row-icons {
+  justify-self: end;
+}
+:root[data-theme="botanical"] body #app .ops-card .cl-name {
+  width: 100%;
+  min-width: 0;
+}
+:root[data-theme="botanical"] body #app .ops-card .cl-name strong {
+  overflow-wrap: normal;
+  word-break: normal;
+}
+
+/* Match the provided library screen's title and compact left-aligned filter group. */
+:root[data-theme="botanical"] body #app .cl-header h1 {
+  font-size: 30px;
+  line-height: 1.25;
+  font-weight: 650;
+}
+:root[data-theme="botanical"] body #app .cl-brand-filters .cl-filter-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-self: start;
+  justify-content: flex-start;
+  flex-wrap: nowrap;
+  width: fit-content;
+  max-width: 100%;
+  gap: var(--md-sys-spacing-2);
+}
+:root[data-theme="botanical"] body #app .cl-brand-filters .cl-filter-toggle small {
+  margin-left: 0;
+  overflow: hidden;
+  overflow-wrap: normal;
+  text-align: left;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root[data-theme="botanical"] body :is(#app, #overlay-root, #campaign-operations-overlay) :is(
+    .ops-creator-popover[popover]:popover-open,
+    .manual-choice-dropdown[open],
+    .drawer[data-m3-enter], .modal[data-m3-enter], .cal-dialog[data-m3-enter],
+    .drawer-backdrop[data-m3-enter], .modal-backdrop[data-m3-enter], .cal-backdrop[data-m3-enter]
+  ),
+  :root[data-theme="botanical"] body :is(#app, #overlay-root, #campaign-operations-overlay) button:not(:disabled) {
+    animation: none !important;
+    transition-duration: .01ms !important;
+    transition-delay: 0ms !important;
+  }
+}
+/* Botanical controls share the spring release shown in the motion reference. */
+:root[data-theme="botanical"] body :is(#app, #overlay-root, #campaign-operations-overlay) .m3-input-popup:popover-open {
+  animation: byou-botanical-fade-in 170ms var(--byou-motion-effects-easing) both,
+    byou-botanical-pop-in 440ms var(--byou-motion-spring-default) both;
+}
+@media (prefers-reduced-motion: reduce) {
+  :root[data-theme="botanical"] body :is(#app, #overlay-root, #campaign-operations-overlay) .m3-input-popup:popover-open { animation: none !important; }
+}
+
+/* Creator feedback: neutral filters and an aligned, equally sized title/count. */
+:root[data-theme="botanical"] body #app .cl-brand-filters {
+  background: var(--md-sys-color-surface-bright);
+  color: var(--md-sys-color-on-surface);
+  border: 1px solid var(--md-sys-color-outline-variant);
+}
+:root[data-theme="botanical"] body #app .cl-brand-filters .cl-history-filters {
+  background: transparent;
+}
+:root[data-theme="botanical"] body #app .cl-header h1,
+:root[data-theme="botanical"] body #app .cl-header h1 > span {
+  font-size: 30px; line-height: 1.25; font-weight: 650;
+}
+:root[data-theme="botanical"] body #app .cl-header h1 > span {
+  color: inherit; margin: 0; padding: 0; vertical-align: baseline;
+}
+
+/* Campaign roster: identity, media, then progressively disclosed workflow. */
+:root[data-theme="botanical"] body #app .ops-cards {grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:24px;align-items:start}
+:root[data-theme="botanical"] body #app .ops-card--clean {padding:20px;gap:16px;cursor:default;min-height:0}
+:root[data-theme="botanical"] body #app .ops-card-identity {display:flex;align-items:center;gap:12px;min-width:0}
+:root[data-theme="botanical"] body #app .ops-card-identity .cl-card-identity {flex:1;min-width:0}
+:root[data-theme="botanical"] body #app .ops-card--clean .cl-name {min-height:48px;justify-content:center}
+:root[data-theme="botanical"] body #app .ops-card--clean .cl-name strong {font-size:18px;line-height:1.35;white-space:normal}
+:root[data-theme="botanical"] body #app .ops-card--clean .ops-select-creator {margin:0;min-width:48px;min-height:48px;display:flex;align-items:center;justify-content:center}
+:root[data-theme="botanical"] body #app .ops-card--clean .ops-select-creator>span {position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
+:root[data-theme="botanical"] body #app .ops-card-platforms {display:flex;flex-wrap:wrap;gap:8px;color:var(--md-sys-color-on-surface-variant);font-size:12px}
+:root[data-theme="botanical"] body #app .ops-card-platforms>span {display:inline-flex;align-items:center;gap:4px}
+:root[data-theme="botanical"] body #app .ops-card--clean .cl-portfolio-videos {margin:0;min-height:0;gap:8px}
+:root[data-theme="botanical"] body #app .ops-card--clean .cl-portfolio-videos--empty {display:flex;padding:24px 16px;background:var(--md-sys-color-surface-container-low);border-radius:12px;font-size:12px;color:var(--md-sys-color-on-surface-variant);justify-content:center}
+:root[data-theme="botanical"] body #app .ops-card-workflow {display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+:root[data-theme="botanical"] body #app .ops-card-phase-control {flex:1;min-width:150px}
+:root[data-theme="botanical"] body #app .ops-card-phase-control select {width:100%;min-height:48px;font-size:12px}
+:root[data-theme="botanical"] body #app .ops-card-actions-button {display:inline-flex;align-items:center;gap:4px;width:auto;min-height:48px;padding:0 12px;font-size:12px}
+:root[data-theme="botanical"] body #app .ops-card-summary {display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:12px;color:var(--md-sys-color-on-surface-variant)}
+/* Focused conversation review deck. */
+:root[data-theme="botanical"] body #app .ops-review-deck {padding:0;border:0;background:transparent}
+:root[data-theme="botanical"] body #app .ops-review-stage {overflow:hidden;border-radius:28px}
+:root[data-theme="botanical"] body #app .ops-review-card {padding:28px;display:flex;flex-direction:column;gap:24px;border:1px solid var(--md-sys-color-outline-variant);border-radius:28px;background:var(--md-sys-color-surface-container-lowest)}
+:root[data-theme="botanical"] body #app .ops-review-card header {display:flex;align-items:center;gap:12px}
+:root[data-theme="botanical"] body #app .ops-review-card h3 {font-size:22px;margin:0 0 4px}
+:root[data-theme="botanical"] body #app .ops-review-avatar {display:grid;place-items:center;width:48px;height:48px;border-radius:50%;background:var(--md-sys-color-secondary-container);color:var(--md-sys-color-on-secondary-container);flex-shrink:0}
+:root[data-theme="botanical"] body #app .ops-review-card small {font-size:12px;color:var(--md-sys-color-on-surface-variant)}
+:root[data-theme="botanical"] body #app .ops-review-label {font-size:12px;font-weight:600;color:var(--md-sys-color-on-surface-variant)}
+:root[data-theme="botanical"] body #app .ops-review-card p {font-size:16px;line-height:1.6;margin:8px 0 0;max-width:65ch}
+:root[data-theme="botanical"] body #app .ops-review-next {background:var(--md-sys-color-surface-container-low);padding:16px 20px;border-radius:16px}
+:root[data-theme="botanical"] body #app .ops-review-card footer {display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+:root[data-theme="botanical"] body #app .ops-review-card [data-ops-action="view-conversation"] {background:var(--md-sys-color-primary);color:var(--md-sys-color-on-primary);border-color:transparent;min-height:48px}
+:root[data-theme="botanical"] body #app .ops-review-navigation {display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 4px;font-size:12px}
+:root[data-theme="botanical"] body #app .ops-review-queue-tools {display:flex;gap:8px;flex-wrap:wrap}
+@media(max-width:600px){:root[data-theme="botanical"] body #app .ops-review-card {padding:20px;gap:20px}}
+
+.ops-review-card {touch-action:pan-y}
+body #campaign-operations-overlay .ops-conversation-primary-actions {gap:12px;align-items:center;flex-wrap:wrap}
+body #campaign-operations-overlay .ops-reply-review + .ops-conversation-primary-actions {margin-top:var(--md-sys-spacing-300,24px)}
+body #app .ops-campaign-tray-body > :is(h2,p) {transform:translateX(-3px)}
+body #app .ops-review-card header {align-items:flex-start}
+body #app .ops-review-previous {margin-inline-start:auto;flex:0 0 36px;display:grid;place-items:center;width:36px;height:36px;padding:6px;border:0;border-radius:50%;background:transparent;color:var(--md-sys-color-primary);cursor:pointer}
+body #app .ops-review-previous:hover:not(:disabled) {background:var(--md-sys-color-surface-container-low)}
+body #app .ops-review-previous:disabled {opacity:.35;cursor:default}
+body #app .ops-review-previous:focus-visible {outline:2px solid var(--md-sys-color-primary);outline-offset:2px}
+@media(pointer:coarse){body #app .ops-review-previous {width:44px;height:44px;flex-basis:44px}}
+
+/* Progress opens beside the campaign instead of expanding its roster. */
+.ops-progress-drawer {width:min(520px,100vw)}
+.ops-progress-drawer .drawer-body {display:flex;flex-direction:column;gap:24px}
+.ops-progress-drawer .ops-progress-chart {display:flex;justify-content:center;padding-block:8px 16px}
+.ops-progress-drawer .ops-progress-summary {display:flex;flex-direction:column;gap:12px}
+.ops-progress-drawer .ops-progress-summary h3 {margin:0;font-size:16px}
+.ops-progress-drawer .ops-progress-summary p {margin:0 0 16px;line-height:1.6}
+/* Finance intake keeps its existing outer padding with a tighter vertical rhythm. */
+:root[data-theme="botanical"] .ops-editor form[data-ops-form="finance-intake"] {
+  gap: 16px;
+}
+:root[data-theme="botanical"] .ops-editor form[data-ops-form="finance-intake"] > fieldset + fieldset {
+  margin-top: 16px;
+  padding-top: 16px;
+}
+:root[data-theme="botanical"] .ops-editor form[data-ops-form="finance-intake"] p {
+  margin-block: 8px;
+}
+:root[data-theme="botanical"] .ops-editor form[data-ops-form="finance-intake"] p:empty {
+  display: none;
+}
+:root[data-theme="botanical"] .ops-editor form[data-ops-form="finance-intake"] .ops-check {
+  margin-top: 12px;
+}
+:root[data-theme="botanical"] .ops-editor form[data-ops-form="finance-intake"] > .ops-actions {
+  justify-content: flex-end;
+}

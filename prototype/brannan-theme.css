@@ -1,0 +1,1021 @@
+/*
+ * BYOU IQ — Project Brannan visual system
+ *
+ * This stylesheet intentionally sits after the structural and CreatorIQ layout
+ * styles. It preserves the dense campaign-management behavior while replacing
+ * the former cyan/card theme with Brannan's editorial, rule-driven system.
+ */
+
+@font-face {
+  font-family: "Brannan Neue Haas Display";
+  src: url("/fonts/Manrope-Variable.ttf") format("truetype");
+  font-display: swap;
+  font-style: normal;
+  font-weight: 200;
+}
+
+@font-face {
+  font-family: "Brannan Neue Haas Display";
+  src: url("/fonts/Manrope-Variable.ttf") format("truetype");
+  font-display: swap;
+  font-style: normal;
+  font-weight: 300;
+}
+
+@font-face {
+  font-family: "Brannan Neue Haas Display";
+  src: url("/fonts/Manrope-Variable.ttf") format("truetype");
+  font-display: swap;
+  font-style: normal;
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "Brannan Neue Haas Display";
+  src: url("/fonts/Manrope-Variable.ttf") format("truetype");
+  font-display: swap;
+  font-style: normal;
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: "Brannan Neue Haas Display";
+  src: url("/fonts/Manrope-Variable.ttf") format("truetype");
+  font-display: swap;
+  font-style: normal;
+  font-weight: 700;
+}
+
+:root {
+  --brannan-black: #050505;
+  --brannan-white: #ffffff;
+  --brannan-paper: #ffffff;
+  --brannan-charcoal: #1c1c1c;
+  --brannan-rule: #d8d8d2;
+  --brannan-advisory: #6f6f68;
+  --brannan-navy: #0c1827;
+  --brannan-navy-active: #14253b;
+  --brannan-navy-raised: #1e3653;
+  --brannan-navy-tint: #eaf1f8;
+  --brannan-success: #4e6b58;
+  --brannan-risk: #a33a32;
+  --brannan-font: "Brannan Neue Haas Display", "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+  /* Compatibility tokens used by the existing operational layout. */
+  --byou-black: var(--brannan-black);
+  --byou-white: var(--brannan-white);
+  --byou-canvas: var(--brannan-paper);
+  --byou-line: var(--brannan-rule);
+  --byou-line-strong: #bdbdb7;
+  --byou-muted: var(--brannan-advisory);
+  --byou-muted-dark: #4e4e49;
+  --byou-cyan: var(--brannan-navy-active);
+  --byou-cyan-hover: var(--brannan-navy-raised);
+  --byou-cyan-soft: var(--brannan-navy-tint);
+  --byou-cyan-faint: #f4f6f8;
+  --byou-link: var(--brannan-navy-active);
+  --byou-danger: var(--brannan-risk);
+  --byou-danger-soft: #f8eeee;
+  --byou-warning: #775f2d;
+  --byou-warning-soft: #f7f2e7;
+  --byou-success: var(--brannan-success);
+  --byou-success-soft: #eef2ef;
+  --byou-control-height: 38px;
+  --ink: var(--brannan-black);
+  --ink-2: var(--brannan-charcoal);
+  --muted: var(--brannan-advisory);
+  --line: var(--brannan-rule);
+  --line-strong: #bdbdb7;
+  --paper: var(--brannan-white);
+  --canvas: var(--brannan-paper);
+  --soft: var(--brannan-paper);
+  --green: var(--brannan-navy-active);
+  --green-dark: var(--brannan-black);
+  --coral: var(--brannan-navy-active);
+  --coral-dark: var(--brannan-navy-active);
+  --gold: #775f2d;
+  --warn-bg: #f7f2e7;
+  --warn-ink: #775f2d;
+  --good-bg: #eef2ef;
+  --good-ink: var(--brannan-success);
+  --neutral-bg: var(--brannan-paper);
+  --neutral-ink: #555550;
+  --shadow: none;
+  --radius: 0;
+  font-family: var(--brannan-font);
+}
+
+html,
+body,
+button,
+input,
+select,
+textarea {
+  font-family: var(--brannan-font);
+  font-synthesis: none;
+}
+
+body {
+  background: var(--brannan-paper);
+  color: var(--brannan-black);
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+
+button,
+input,
+select,
+textarea,
+table,
+.metric-value,
+.summary-strip strong,
+.report-kpis strong {
+  font-variant-numeric: tabular-nums;
+}
+
+strong,
+b {
+  font-weight: 500;
+}
+
+/* Legacy layout rules used several synthetic 700–900 weights. Brannan's
+   interface hierarchy stays at Medium; Bold remains reserved for rare display use. */
+.metric-value,
+.avatar,
+.role-readonly,
+.external-link,
+.report-icon,
+.section-number,
+.simple-table > .simple-head,
+.simple-table em,
+.source-mark,
+.import-flow > span,
+.activity-type,
+.field-chip-list span,
+.recommendation-rank,
+.admin-rule span,
+.calendar-head,
+.campaign-table .risk-cell,
+.risk-text,
+.timestamp-link {
+  font-weight: 500;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  color: var(--brannan-black);
+  font-weight: 400;
+}
+
+h1,
+.page-header h1,
+.profile-hero h1,
+.campaign-hero h1,
+.report-hero h1,
+.system-card h1 {
+  font-size: clamp(30px, 3vw, 36px);
+  font-weight: 300;
+  letter-spacing: -0.035em;
+  line-height: 1.04;
+}
+
+h2,
+.panel-heading h2,
+.workspace-section-header h2,
+.drawer-header h2,
+.report-section-body h2 {
+  font-size: 20px;
+  font-weight: 400;
+  letter-spacing: -0.018em;
+  line-height: 1.15;
+}
+
+h3 {
+  font-size: 15px;
+  font-weight: 500;
+}
+
+a,
+.link-button,
+.timestamp-link {
+  color: var(--brannan-navy-active);
+  text-decoration-color: currentColor;
+  text-underline-offset: 3px;
+}
+
+:focus-visible {
+  outline: 2px solid var(--brannan-navy-active);
+  outline-offset: 2px;
+}
+
+/* Shell and navigation */
+.sidebar {
+  border-right: 1px solid #26384d;
+  background: var(--brannan-navy);
+  padding: 24px 12px 16px;
+}
+
+.primary-nav {
+  gap: 3px;
+  margin-top: 0;
+}
+
+.nav-item,
+.admin-link {
+  min-height: 40px;
+  border: 1px solid transparent;
+  border-radius: 0;
+  color: rgba(255, 255, 255, 0.74);
+  padding: 9px 11px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  transition: background-color 180ms ease, border-color 180ms ease, color 180ms ease;
+}
+
+.nav-item:hover,
+.admin-link:hover {
+  border-color: rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--brannan-white);
+}
+
+.nav-item.is-active {
+  border-color: #28415f;
+  border-left-color: var(--brannan-white);
+  background: var(--brannan-navy-active);
+  color: var(--brannan-white);
+  box-shadow: none;
+}
+
+.nav-glyph {
+  border-radius: 0;
+  font-weight: 500;
+}
+
+.sidebar-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+  padding-top: 10px;
+}
+
+.user-card {
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+  padding-top: 14px;
+}
+
+.user-avatar {
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 0;
+  background: transparent;
+  font-weight: 500;
+}
+
+.user-card strong {
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.user-card small {
+  color: rgba(255, 255, 255, 0.52);
+  font-size: 9px;
+}
+
+.main-content {
+  background: var(--brannan-paper);
+  padding: 28px 30px 64px;
+}
+
+.shared-report-shell,
+.system-screen {
+  background: var(--brannan-paper);
+}
+
+.shared-report-header,
+.mobile-header {
+  border-color: #26384d;
+  background: var(--brannan-navy);
+  color: var(--brannan-white);
+}
+
+.shared-report-header {
+  justify-content: flex-end;
+  min-height: 56px;
+  padding: 0 28px;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+}
+
+/* Editorial page framing */
+.page-header {
+  margin-bottom: 20px;
+  border-bottom: 1px solid var(--brannan-rule);
+  padding-bottom: 18px;
+}
+
+.page-description,
+.profile-hero p,
+.campaign-hero p,
+.report-hero p {
+  color: var(--brannan-advisory);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.eyebrow,
+.table-head,
+.campaign-table th,
+.search-results-group > h3,
+.metric-card span,
+.summary-strip span,
+.report-kpis span {
+  color: var(--brannan-advisory);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+}
+
+/* Buttons and form controls */
+.button,
+.icon-button,
+.signout-button {
+  min-height: 38px;
+  border-radius: 0;
+  padding: 8px 16px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  box-shadow: none;
+  transition: background-color 200ms ease, border-color 200ms ease, color 200ms ease;
+}
+
+.button--primary {
+  border: 1px solid var(--brannan-navy-active);
+  background: var(--brannan-navy-active);
+  color: var(--brannan-white);
+}
+
+.button--primary:hover:not(:disabled) {
+  border-color: var(--brannan-navy-active);
+  background: var(--brannan-white);
+  color: var(--brannan-navy-active);
+}
+
+.button--secondary {
+  border: 1px solid var(--brannan-black);
+  background: var(--brannan-white);
+  color: var(--brannan-black);
+}
+
+.button--secondary:hover:not(:disabled) {
+  border-color: var(--brannan-black);
+  background: var(--brannan-black);
+  color: var(--brannan-white);
+}
+
+.button--soft {
+  border: 1px solid var(--brannan-rule);
+  background: var(--brannan-paper);
+  color: var(--brannan-black);
+}
+
+.button--soft:hover:not(:disabled) {
+  border-color: var(--brannan-black);
+  background: var(--brannan-white);
+}
+
+.button--small {
+  min-height: 31px;
+  padding: 5px 10px;
+  font-size: 11px;
+}
+
+select,
+input,
+textarea,
+.search-box,
+.table-search,
+.search-header label {
+  border: 1px solid var(--brannan-rule);
+  border-radius: 0;
+  background: var(--brannan-paper);
+  color: var(--brannan-black);
+  font-size: 14px;
+  font-weight: 400;
+}
+
+select,
+input,
+textarea {
+  padding: 9px 11px;
+}
+
+select:focus,
+input:focus,
+textarea:focus,
+.search-box:focus-within,
+.table-search:focus-within,
+.search-header label:focus-within {
+  border-color: var(--brannan-navy-active);
+  background: var(--brannan-white);
+  box-shadow: 0 0 0 2px rgba(20, 37, 59, 0.09);
+  outline: 0;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #8a8982;
+}
+
+.form-stack label > span,
+.finder-controls label > span {
+  color: var(--brannan-charcoal);
+  font-size: 12px;
+  font-weight: 500;
+}
+
+/* Rule-driven surfaces: shared edges, restrained depth, no floating cards. */
+.panel,
+.summary-strip,
+.metric-card,
+.profile-hero,
+.campaign-hero,
+.report-hero,
+.report-document,
+.report-notice,
+.system-card,
+.workspace-section,
+.template-row,
+.template-card,
+.published-report-frame {
+  border: 1px solid var(--brannan-rule);
+  border-radius: 0;
+  background: var(--brannan-white);
+  box-shadow: none;
+}
+
+.panel {
+  padding: 20px;
+}
+
+.panel-heading,
+.workspace-section-header,
+.section-heading-row {
+  border-bottom-color: var(--brannan-rule);
+}
+
+.summary-strip,
+.metric-grid {
+  gap: 0;
+  border: 1px solid var(--brannan-rule);
+  border-radius: 0;
+  background: var(--brannan-white);
+}
+
+.summary-strip div,
+.metric-card {
+  border: 0;
+  border-right: 1px solid var(--brannan-rule);
+  border-radius: 0;
+}
+
+.summary-strip div:last-child,
+.metric-card:last-child {
+  border-right: 0;
+}
+
+.summary-strip strong,
+.metric-card strong,
+.report-kpis strong {
+  color: var(--brannan-black);
+  font-weight: 400;
+  letter-spacing: -0.025em;
+}
+
+.metric-card strong {
+  font-size: 24px;
+}
+
+.profile-hero,
+.campaign-hero,
+.report-hero {
+  padding: 22px 24px;
+}
+
+/* Tabs and saved filters use rules, not capsules. */
+.tabs {
+  gap: 0;
+  border-bottom: 1px solid var(--brannan-rule);
+}
+
+.tabs button {
+  border-radius: 0;
+  background: transparent;
+  color: var(--brannan-advisory);
+  padding: 11px 14px 10px;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.tabs button:hover {
+  background: var(--brannan-paper);
+  color: var(--brannan-black);
+}
+
+.tabs button.is-active {
+  border-bottom: 2px solid var(--brannan-navy-active);
+  background: transparent;
+  color: var(--brannan-black);
+}
+
+.campaign-toolbar,
+.table-toolbar,
+.saved-view-bar,
+.filter-bar {
+  min-height: 46px;
+  border-color: var(--brannan-rule);
+  background: var(--brannan-white);
+}
+
+.saved-view-bar,
+.saved-views {
+  gap: 5px;
+}
+
+.saved-view,
+.filter-chip,
+.saved-views button {
+  min-height: 30px;
+  border: 1px solid var(--brannan-rule);
+  border-radius: 0;
+  background: var(--brannan-white);
+  color: var(--brannan-charcoal);
+  padding: 6px 10px;
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.saved-view:hover,
+.filter-chip:hover {
+  border-color: var(--brannan-navy-active);
+  background: var(--brannan-paper);
+}
+
+.saved-view.is-active,
+.filter-chip.is-active,
+.saved-views button.is-active {
+  border-color: var(--brannan-navy-active);
+  background: var(--brannan-navy-active);
+  color: var(--brannan-white);
+}
+
+/* Dense operational tables */
+.campaign-table-wrap,
+.table-scroll,
+.data-table,
+.campaign-list-panel {
+  border-color: var(--brannan-rule);
+  border-radius: 0;
+  background: var(--brannan-white);
+}
+
+.campaign-table,
+.table-row {
+  color: var(--brannan-black);
+  font-size: 13px;
+  font-weight: 400;
+}
+
+.campaign-table th,
+.campaign-table .table-head,
+.table-head {
+  min-height: 38px;
+  background: var(--brannan-paper);
+  color: var(--brannan-advisory);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.09em;
+}
+
+.campaign-table td,
+.campaign-table th,
+.campaign-table .table-row,
+.table-row {
+  border-bottom-color: var(--brannan-rule);
+}
+
+.campaign-table td,
+.campaign-table .table-row,
+.table-row {
+  min-height: 46px;
+}
+
+.campaign-table .campaign-name,
+.campaign-table .table-row strong,
+.table-row strong {
+  font-weight: 500;
+}
+
+.campaign-table tbody tr:hover,
+.campaign-table button.table-row:hover,
+.campaign-table button.table-row:focus-visible,
+.table-button:hover,
+.source-row:hover,
+.action-row:hover,
+.mini-creator:hover,
+.stack-row:hover,
+.search-result:hover {
+  background: var(--brannan-paper);
+}
+
+.campaign-table tbody tr.is-selected,
+.source-row.is-selected,
+.search-result.is-active {
+  background: #f3f6f9;
+  box-shadow: inset 3px 0 0 var(--brannan-navy-active);
+}
+
+.campaign-table tbody tr.is-selected td:first-child {
+  box-shadow: inset 3px 0 0 var(--brannan-navy-active);
+}
+
+.progress-track {
+  height: 4px;
+  border-radius: 0;
+  background: #e3e3de;
+}
+
+.progress-track i {
+  border-radius: 0;
+  background: var(--brannan-navy-active);
+}
+
+.tag-wrap em,
+.badge {
+  min-height: 22px;
+  border: 1px solid var(--brannan-rule);
+  border-radius: 0;
+  background: var(--brannan-white);
+  color: var(--brannan-charcoal);
+  padding: 4px 8px;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.badge--good {
+  border-color: #aab9ae;
+  background: var(--brannan-white);
+  color: var(--brannan-success);
+}
+
+.badge--warn {
+  border-color: #d7c99f;
+  background: var(--brannan-white);
+  color: #775f2d;
+}
+
+.badge--neutral,
+.badge--muted {
+  border-color: var(--brannan-rule);
+  background: var(--brannan-paper);
+  color: #555550;
+}
+
+.risk-count {
+  border-radius: 0;
+  background: transparent;
+  color: var(--brannan-risk);
+  font-weight: 500;
+}
+
+.exception-list {
+  gap: 0;
+  border-top: 1px solid var(--brannan-rule);
+  border-left: 1px solid var(--brannan-rule);
+}
+
+.exception-list > div {
+  border: 0;
+  border-right: 1px solid var(--brannan-rule);
+  border-bottom: 1px solid var(--brannan-rule);
+  border-radius: 0;
+  background: var(--brannan-white);
+}
+
+.exception-list > div > span {
+  border: 1px solid #d7c99f;
+  border-radius: 0;
+  background: var(--brannan-paper);
+  font-weight: 500;
+}
+
+/* Campaign workspaces, reports, templates, sources */
+.campaign-overview-grid,
+.workspace-grid,
+.workspace-columns,
+.source-workspace,
+.report-builder {
+  gap: 16px;
+}
+
+.deliverable-row,
+.timeline-entry,
+.calendar-row,
+.version-row,
+.shipment-row,
+.communication-item,
+.simple-table > div,
+.report-row,
+.report-module {
+  border-bottom-color: var(--brannan-rule);
+}
+
+.timestamp-comment,
+.calendar-day.is-today,
+.calendar-event,
+.integration-boundary,
+.permission-callout,
+.privacy-note,
+.report-footnote,
+.muted-copy,
+.linked-records span {
+  border-radius: 0;
+  background: #f3f6f9;
+}
+
+.timestamp-comment {
+  border-left-color: var(--brannan-navy-active);
+}
+
+.content-preview {
+  border-color: var(--brannan-rule);
+  background: var(--brannan-paper);
+}
+
+.calendar-day,
+.calendar-grid {
+  border-color: var(--brannan-rule);
+}
+
+.calendar-event {
+  border-left-color: var(--brannan-navy-active);
+}
+
+.source-row,
+.source-chip-list button,
+.source-campaign-list button,
+.import-run-card,
+.recommendation-card,
+.search-result,
+.report-kpis > div {
+  border-radius: 0;
+}
+
+.source-mark,
+.activity-type,
+.report-icon {
+  border-radius: 0;
+  background: var(--brannan-paper);
+  color: var(--brannan-navy-active);
+}
+
+.source-row.is-selected {
+  border-color: var(--brannan-rule);
+}
+
+.template-card:hover {
+  border-color: var(--brannan-navy-active);
+  background: var(--brannan-paper);
+  box-shadow: inset 3px 0 0 var(--brannan-navy-active);
+}
+
+.template-table {
+  overflow-x: auto;
+  padding: 0;
+}
+
+.template-table .table-row {
+  grid-template-columns: minmax(210px, 1.35fr) 90px minmax(175px, 1fr) minmax(145px, 0.8fr) minmax(145px, 0.8fr) 94px;
+  min-width: 940px;
+  gap: 10px;
+  padding: 10px 12px;
+}
+
+.template-table .table-head {
+  min-height: 40px;
+}
+
+.template-table .table-row > span {
+  min-width: 0;
+}
+
+.template-table .table-row > span:last-child {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.template-table strong,
+.template-table small {
+  display: block;
+}
+
+.template-table small {
+  margin-top: 3px;
+  color: var(--brannan-advisory);
+}
+
+.duplicate-panel {
+  margin-top: 16px;
+  padding: 0;
+}
+
+.duplicate-panel .panel-heading {
+  margin: 0;
+  border-bottom: 1px solid var(--brannan-rule);
+  padding: 18px 20px;
+}
+
+.duplicate-list > div {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 16px;
+  border-bottom: 1px solid var(--brannan-rule);
+  padding: 12px 20px;
+}
+
+.duplicate-list > div:last-child {
+  border-bottom: 0;
+}
+
+.duplicate-list strong,
+.duplicate-list small {
+  display: block;
+}
+
+.duplicate-list small {
+  margin-top: 3px;
+  color: var(--brannan-advisory);
+}
+
+.report-document > section {
+  border-bottom-color: var(--brannan-rule);
+}
+
+.section-number {
+  background: var(--brannan-navy);
+  color: var(--brannan-white);
+  font-weight: 500;
+}
+
+.report-kpis {
+  gap: 0;
+  border: 1px solid var(--brannan-rule);
+}
+
+.report-kpis > div {
+  border-right: 1px solid var(--brannan-rule);
+  background: var(--brannan-white);
+}
+
+.report-kpis > div:last-child {
+  border-right: 0;
+}
+
+/* Drawers, modals, feedback */
+.drawer-backdrop,
+.modal-backdrop {
+  background: rgba(5, 5, 5, 0.54);
+}
+
+.drawer,
+.drawer--search,
+.search-drawer,
+.global-search-panel {
+  border-color: var(--brannan-rule);
+  background: var(--brannan-white);
+  box-shadow: none;
+}
+
+.drawer-header,
+.modal-header,
+.modal-footer {
+  border-color: var(--brannan-rule);
+}
+
+.icon-button {
+  width: 34px;
+  height: 34px;
+  border: 1px solid var(--brannan-rule);
+  background: var(--brannan-white);
+  color: var(--brannan-black);
+  padding: 0;
+}
+
+.icon-button:hover {
+  border-color: var(--brannan-black);
+  background: var(--brannan-black);
+  color: var(--brannan-white);
+}
+
+.modal {
+  border: 1px solid var(--brannan-rule);
+  border-radius: 0;
+  background: var(--brannan-white);
+  box-shadow: 0 18px 46px rgba(5, 5, 5, 0.2);
+}
+
+.toast {
+  border: 1px solid #29425f;
+  border-radius: 0;
+  background: var(--brannan-navy);
+  color: var(--brannan-white);
+  font-size: 12px;
+  font-weight: 500;
+  box-shadow: none;
+}
+
+.system-card {
+  border-top: 3px solid var(--brannan-navy-active);
+}
+
+.system-loader {
+  border-color: var(--brannan-rule);
+  border-top-color: var(--brannan-navy-active);
+}
+
+@media (max-width: 1120px) {
+  .sidebar {
+    padding-inline: 8px;
+  }
+
+  .primary-nav {
+    margin-top: 0;
+  }
+
+  .main-content {
+    padding: 24px 22px 60px;
+  }
+}
+
+@media (max-width: 720px) {
+  .mobile-header {
+    justify-content: flex-end;
+    min-height: 50px;
+    padding: 7px 12px;
+  }
+
+  .mobile-header .admin-link {
+    width: auto;
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  .mobile-nav {
+    border-top: 1px solid var(--brannan-rule);
+    background: var(--brannan-white);
+    box-shadow: none;
+  }
+
+  .mobile-nav .nav-item {
+    border-radius: 0;
+    color: var(--brannan-advisory);
+  }
+
+  .mobile-nav .nav-item.is-active {
+    border-color: var(--brannan-navy-active);
+    background: var(--brannan-navy-active);
+    color: var(--brannan-white);
+  }
+
+  .main-content {
+    padding: 18px 12px 82px;
+  }
+
+  .summary-strip div,
+  .metric-card,
+  .report-kpis > div {
+    border-right: 0;
+    border-bottom: 1px solid var(--brannan-rule);
+  }
+
+  .summary-strip div:last-child,
+  .metric-card:last-child,
+  .report-kpis > div:last-child {
+    border-bottom: 0;
+  }
+}
+
+@media print {
+  body,
+  .main-content,
+  .shared-report-shell {
+    background: var(--brannan-white);
+  }
+}

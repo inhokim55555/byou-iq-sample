@@ -1,0 +1,16 @@
+.ci-stat-grid,.ci-demographic-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--md-sys-spacing-300,24px)}
+.ci-stat{display:flex;flex-direction:column;gap:8px;padding:24px;border:1px solid var(--md-sys-color-outline-variant);border-radius:var(--md-sys-shape-corner-medium,12px);background:var(--md-sys-color-surface-container-low)}
+.ci-stat>strong{font-size:clamp(28px,3vw,40px);font-weight:600;line-height:1.2;color:var(--md-sys-color-primary);font-variant-numeric:tabular-nums}
+.ci-stat>small,.ci-caption{font-size:12px;line-height:1.65;color:var(--md-sys-color-on-surface-variant)}
+.ci-performance p.ci-caption,.ci-audience p.ci-caption{margin:12px 0 0}
+.ci-heading{display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap}.ci-heading h3{margin:0}
+.ci-highlight{display:flex;align-items:baseline;gap:12px;margin:24px 0}.ci-highlight strong{font-size:32px;color:var(--md-sys-color-primary);font-weight:600}
+.ci-audience-account+.ci-audience-account{border-top:1px solid var(--md-sys-color-outline-variant);margin-top:32px;padding-top:24px}
+.ci-audience h4{font-size:14px;font-weight:600;margin:20px 0 16px}.ci-bars{list-style:none;padding:0;margin:0;display:grid;gap:16px}
+.ci-bar-label{display:flex;justify-content:space-between;gap:16px;font-size:13px;margin-bottom:6px}.ci-bar-label span{overflow-wrap:anywhere}.ci-bar-label strong{font-variant-numeric:tabular-nums;white-space:nowrap;font-weight:500}
+.ci-bar-track{height:8px;border-radius:8px;background:var(--md-sys-color-surface-container-high);overflow:hidden}.ci-bar-track>span{display:block;height:100%;background:var(--md-sys-color-primary);border-radius:8px;min-width:0}
+.ci-more{margin-top:16px}.ci-more summary{cursor:pointer;color:var(--md-sys-color-primary);font-size:13px;margin-bottom:16px}.ci-demographic-grid{margin-top:24px;border-top:1px solid var(--md-sys-color-outline-variant)}
+@media(max-width:640px){.ci-stat-grid,.ci-demographic-grid{grid-template-columns:1fr;gap:16px}.ci-stat{padding:20px}.ci-highlight{flex-wrap:wrap}.ci-demographic-grid{margin-top:20px}}
+
+.ci-country-name{display:flex;align-items:center;gap:9px}.ci-flag{display:inline-block;width:24px;height:18px;object-fit:contain;flex-shrink:0;border-radius:2px;box-shadow:0 0 0 1px #00000010}.ci-highlight .ci-flag{align-self:center}
+.ci-gender-figures{display:flex;justify-content:center;gap:clamp(32px,6vw,72px);padding:4px 0 8px}.ci-person{display:flex;flex-direction:column;align-items:center;gap:7px}.ci-person svg{width:80px;height:184px;overflow:visible}.ci-person-male{color:#3983C7}.ci-person-female{color:#D5689C}.ci-person strong{font-size:22px;font-weight:600;font-variant-numeric:tabular-nums}.ci-person>span{font-size:13px;color:var(--md-sys-color-on-surface)}.ci-gender-unspecified{text-align:center;font-size:12px;color:var(--md-sys-color-on-surface-variant);margin:12px 0}.ci-gender-unspecified strong{margin-left:8px;font-weight:500}

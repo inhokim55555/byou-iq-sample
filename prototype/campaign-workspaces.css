@@ -1,0 +1,54 @@
+/* Workspace layout extends the shared Botanical controls, tabs, and tables. */
+.ops-workspace-typebar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--md-sys-spacing-4);
+  margin-bottom: var(--md-sys-spacing-6);
+  border-bottom: 1px solid var(--md-sys-color-outline-variant);
+}
+.ops-workspace-typebar .ops-workspace-tabs {
+  min-width: 0;
+  overflow-x: auto;
+  flex-wrap: nowrap;
+  margin: 0;
+  border-bottom: 0;
+}
+.ops-workspace-tabs button { flex-shrink: 0; white-space: nowrap; }
+.ops-workspace-typebar > .button { flex-shrink: 0; }
+.ops-workspace-members { display: grid; justify-items: start; gap: var(--md-sys-spacing-1); }
+.ops-workspace-type-link {
+  display: block;
+  font: inherit;
+  font-weight: 500;
+  text-align: left;
+  padding: 0;
+  border: 0;
+  color: var(--md-sys-color-primary);
+  background: transparent;
+  cursor: pointer;
+}
+.ops-workspace-overview h2 { margin-bottom: var(--md-sys-spacing-4); }
+.ops-workspace-overview .ops-table { min-width: 680px; }
+.ops-workspace-overview .ops-name-link { margin-top: var(--md-sys-spacing-1); }
+.ops-workspace-list .ops-roster-identity { min-width: 220px; }
+.ops-workspace-list .ops-roster-status { min-width: 230px; width: 30%; }
+.ops-workspace-list .ops-roster-next { min-width: 260px; width: 38%; }
+.ops-workspace-list .ops-list-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--md-sys-spacing-2);
+  margin-top: var(--md-sys-spacing-3);
+}
+.ops-workspace-list .ops-inline-phase { max-width: 100%; }
+.ops-workspace-list .ops-list-fee { margin-top: var(--md-sys-spacing-2); }
+.ops-workspace-list .ops-roster-next p { margin: 0; line-height: 1.55; }
+.ops-workspace-list .ops-review-cue { margin-top: var(--md-sys-spacing-2); }
+@media (max-width: 720px) {
+  .ops-workspace-typebar { flex-wrap: wrap; gap: var(--md-sys-spacing-2); padding-bottom: var(--md-sys-spacing-2); }
+  .ops-workspace-typebar .ops-workspace-tabs { flex-basis: 100%; }
+  .ops-workspace-typebar > .button,
+  .ops-workspace-list .ops-icon-button,
+  .ops-workspace-list .ops-inline-phase { min-height: 44px; }
+}

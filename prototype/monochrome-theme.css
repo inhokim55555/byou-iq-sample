@@ -1,0 +1,1632 @@
+/*
+ * BYOU IQ Material 3 monochrome theme
+ *
+ * Loaded last by the app shell so one semantic token set can harmonize the
+ * existing feature stylesheets without changing their data or layout logic.
+ * The Brannan Neue Haas typography remains the product typeface.
+ */
+:root {
+  /* Compatibility aliases keep existing features on the same theme authority. */
+  --brannan-black: var(--md-sys-color-on-surface);
+  --brannan-white: var(--md-sys-color-surface);
+  --brannan-paper: var(--md-sys-color-surface);
+  --brannan-charcoal: var(--md-sys-color-on-surface-variant);
+  --brannan-advisory: var(--md-sys-color-on-surface-variant);
+  --brannan-rule: var(--md-sys-color-outline-variant);
+  --brannan-navy: var(--md-sys-color-surface-container);
+  --brannan-navy-active: var(--md-sys-color-primary);
+  --brannan-navy-raised: var(--md-comp-action-primary-hover);
+  --brannan-navy-tint: var(--md-sys-color-primary-container);
+  --brannan-success: #3b3b3b;
+  --brannan-risk: var(--md-sys-color-error);
+
+  --byou-black: var(--md-sys-color-on-surface);
+  --byou-white: var(--md-sys-color-surface);
+  --byou-canvas: var(--md-sys-color-surface);
+  --byou-line: var(--md-sys-color-outline-variant);
+  --byou-line-strong: var(--md-sys-color-outline);
+  --byou-muted: var(--md-sys-color-on-surface-variant);
+  --byou-muted-dark: #3f3f3f;
+  --byou-cyan: var(--md-sys-color-primary);
+  --byou-cyan-hover: var(--md-comp-action-primary-hover);
+  --byou-cyan-soft: var(--md-sys-color-primary-container);
+  --byou-cyan-faint: var(--md-sys-color-surface-container-low);
+  --byou-link: var(--md-sys-color-primary);
+  --byou-danger: var(--md-sys-color-error);
+  --byou-danger-soft: var(--md-sys-color-error-container);
+  --byou-warning: #444444;
+  --byou-warning-soft: var(--md-sys-color-surface-container-high);
+  --byou-success: #3b3b3b;
+  --byou-success-soft: var(--md-sys-color-surface-container);
+
+  --ink: var(--md-sys-color-on-surface);
+  --ink-2: #393939;
+  --muted: var(--md-sys-color-on-surface-variant);
+  --line: var(--md-sys-color-outline-variant);
+  --line-strong: var(--md-sys-color-outline);
+  --paper: var(--md-sys-color-surface);
+  --canvas: var(--md-sys-color-surface-container-low);
+  --soft: var(--md-sys-color-surface-container);
+  --surface: var(--md-sys-color-surface);
+  --surface-soft: var(--md-sys-color-surface-container-low);
+  --surface-subtle: var(--md-sys-color-surface-container-low);
+  --surface-muted: var(--md-sys-color-surface-container);
+  --surface-elevated: var(--md-sys-color-surface-container-high);
+  --text: var(--md-sys-color-on-surface);
+  --text-muted: var(--md-sys-color-on-surface-variant);
+  --border: var(--md-sys-color-outline-variant);
+  --border-subtle: var(--md-sys-color-outline-variant);
+  --brand: var(--md-sys-color-primary);
+  --brand-tint: var(--md-sys-color-primary-container);
+  --brand-hover: var(--md-comp-action-primary-hover);
+  --control-border: var(--md-sys-color-outline);
+  --focus-ring: var(--md-sys-color-primary);
+  --danger-text: var(--md-sys-color-error);
+  --danger-bg: var(--md-sys-color-error-container);
+  --warning-text: #3f3f3f;
+  --warning-bg: var(--md-sys-color-surface-container-high);
+  --good-ink: var(--md-comp-action-primary-hover);
+  --good-bg: var(--md-sys-color-surface-container);
+  --warn-ink: var(--md-comp-action-primary-hover);
+  --warn-bg: var(--md-sys-color-surface-container-high);
+  --neutral-ink: #505050;
+  --neutral-bg: var(--md-sys-color-surface-container-low);
+  --green: var(--md-sys-color-primary);
+  --green-dark: var(--md-comp-action-primary-hover);
+  --coral: #444444;
+  --coral-dark: var(--md-sys-color-primary);
+  --gold: #5b5b5b;
+  --shadow: var(--md-sys-elevation-level1);
+  --radius: var(--md-sys-shape-corner-medium);
+  --byou-control-height: 40px;
+  --byou-sidebar-width: 88px;
+}
+
+
+
+html,
+body,
+body .main-content,
+body .shared-report-shell,
+body .system-screen {
+  background: var(--md-sys-color-surface);
+  color: var(--md-sys-color-on-surface);
+}
+
+body,
+button,
+input,
+select,
+textarea {
+  color: var(--md-sys-color-on-surface);
+}
+
+#app,
+#overlay-root,
+#campaign-operations-overlay,
+#toast-root {
+  color: var(--md-sys-color-on-surface);
+}
+
+#app a,
+#overlay-root a,
+#campaign-operations-overlay a,
+.shared-report-shell a {
+  color: var(--md-sys-color-primary);
+  text-underline-offset: 3px;
+}
+
+#app :is(.eyebrow, .page-description, .helper-text, .muted-copy, small, .table-head, .campaign-table th),
+#overlay-root :is(.eyebrow, .helper-text, small),
+#campaign-operations-overlay :is(.eyebrow, .helper-text, small) {
+  color: var(--md-sys-color-on-surface-variant);
+}
+
+::selection {
+  color: var(--md-sys-color-on-primary);
+  background: var(--md-sys-color-primary);
+}
+
+/* Product shell and adaptive navigation. */
+body .sidebar,
+body .mobile-header,
+body .shared-report-header {
+  border-color: var(--md-sys-color-outline-variant);
+  background: var(--md-sys-color-surface-container-low);
+  color: var(--md-sys-color-on-surface);
+}
+
+body .sidebar {
+  border-right: 1px solid var(--md-sys-color-outline-variant);
+}
+
+body .mobile-nav {
+  border-color: var(--md-sys-color-outline-variant);
+  background: var(--md-sys-color-surface);
+}
+
+#app :is(.nav-item, .admin-link, .mobile-nav .nav-item) {
+  min-height: 44px;
+  border: 1px solid transparent;
+  border-radius: var(--md-sys-shape-corner-full);
+  background: transparent;
+  color: var(--md-sys-color-on-surface-variant);
+  transition: background-color var(--md-sys-motion-duration-short) var(--md-sys-motion-easing-standard),
+    color var(--md-sys-motion-duration-short) var(--md-sys-motion-easing-standard);
+}
+
+#app :is(.nav-item, .admin-link, .mobile-nav .nav-item):hover {
+  background: var(--md-sys-state-hover);
+  color: var(--md-sys-color-on-surface);
+}
+
+#app :is(.nav-item, .admin-link, .mobile-nav .nav-item).is-active {
+  border-color: transparent;
+  border-left-width: 1px;
+  background: var(--md-sys-color-secondary-container);
+  color: var(--md-sys-color-on-secondary-container);
+  font-weight: 500;
+  box-shadow: none;
+}
+
+
+/* M3 navigation rail: icon indicator with visible destination labels. */
+#app .sidebar {
+  width: 88px;
+  align-items: stretch;
+  padding: 16px 8px;
+}
+
+#app .sidebar .primary-nav {
+  width: 100%;
+  gap: 12px;
+  margin-top: 0;
+}
+
+#app .sidebar .nav-item {
+  display: flex;
+  min-height: 72px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  width: 100%;
+  min-width: 0;
+  padding: 8px 0;
+  font-size: 12px;
+  line-height: 1.15;
+  text-align: center;
+  white-space: normal;
+}
+
+#app .sidebar .nav-item > span:not(.nav-glyph) {
+  display: block;
+  max-width: 100%;
+  overflow-wrap: normal;
+  white-space: nowrap;
+}
+
+#app .sidebar .nav-glyph,
+#app .mobile-nav .nav-glyph {
+  display: grid;
+  width: 56px;
+  min-width: 56px;
+  height: 32px;
+  place-items: center;
+  border: 0;
+  border-radius: var(--md-sys-shape-corner-full);
+  background: transparent;
+  color: inherit;
+}
+
+#app .sidebar .nav-item:hover,
+#app .sidebar .nav-item.is-active,
+#app .mobile-nav .nav-item.is-active {
+  border-color: transparent;
+  background: transparent;
+  box-shadow: none;
+}
+
+#app .sidebar .nav-item:hover .nav-glyph,
+#app .mobile-nav .nav-item:hover .nav-glyph {
+  background: var(--md-sys-state-hover);
+}
+
+#app .sidebar .nav-item.is-active .nav-glyph,
+#app .mobile-nav .nav-item.is-active .nav-glyph {
+  background: var(--md-sys-color-secondary-container);
+  color: var(--md-sys-color-on-secondary-container);
+}
+
+#app .mobile-nav .nav-item {
+  min-height: 56px;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+  padding: 6px 3px;
+  font-size: 11px;
+  line-height: 1.15;
+  text-align: center;
+}
+
+#app .sidebar .user-card {
+  color: var(--md-sys-color-on-surface);
+  align-items: center;
+  flex-direction: column;
+  gap: 8px;
+}
+
+#app .sidebar .user-card > span:not(.user-avatar) {
+  width: 100%;
+  overflow-wrap: anywhere;
+  text-align: center;
+}
+
+#app .sidebar .user-card strong { color: var(--md-sys-color-on-surface); }
+
+#app .sidebar .user-card small {
+  color: var(--md-sys-color-on-surface-variant);
+  display: block;
+  text-align: center;
+}
+
+#app .nav-glyph,
+#app .nav-item svg,
+#app .admin-link svg,
+#app .mobile-nav svg,
+.material-icon {
+  fill: currentColor;
+  stroke: none;
+}
+
+#app .nav-glyph svg *,
+#app .nav-item svg *,
+#app .admin-link svg *,
+#app .mobile-nav svg *,
+.material-icon * {
+  fill: currentColor;
+  stroke: none;
+}
+
+#app .material-icon,
+#overlay-root .material-icon,
+#campaign-operations-overlay .material-icon,
+#toast-root .material-icon {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  flex: 0 0 24px;
+  vertical-align: middle;
+  pointer-events: none;
+}
+
+#app .user-avatar {
+  border-color: var(--md-sys-color-outline);
+  border-radius: var(--md-sys-shape-corner-full);
+  background: var(--md-sys-color-surface-container-highest);
+  color: var(--md-sys-color-on-surface);
+}
+
+#app .skip-link {
+  position: fixed;
+  z-index: 200;
+  inset: 8px auto auto 8px;
+  transform: translateY(-160%);
+  border: 1px solid var(--md-sys-color-outline);
+  border-radius: var(--md-sys-shape-corner-full);
+  background: var(--md-sys-color-inverse-surface);
+  color: var(--md-sys-color-inverse-on-surface);
+  padding: 12px 18px;
+  transition: transform var(--md-sys-motion-duration-short) var(--md-sys-motion-easing-standard);
+}
+
+#app .skip-link:focus {
+  transform: translateY(0);
+}
+
+/* Buttons: emphasis follows action importance; icons retain a 24px glyph. */
+#app :is(.button, .icon-button, .signout-button, .text-button, .link-button),
+#overlay-root :is(.button, .icon-button, .signout-button, .text-button, .link-button),
+#campaign-operations-overlay :is(.button, .icon-button, .signout-button, .text-button, .link-button) {
+  border-radius: var(--md-sys-shape-corner-full);
+  font-family: inherit;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  transition: color var(--md-sys-motion-duration-short) var(--md-sys-motion-easing-standard),
+    background-color var(--md-sys-motion-duration-short) var(--md-sys-motion-easing-standard),
+    border-color var(--md-sys-motion-duration-short) var(--md-sys-motion-easing-standard),
+    box-shadow var(--md-sys-motion-duration-short) var(--md-sys-motion-easing-standard);
+}
+
+#app :is(.button, .signout-button),
+#overlay-root :is(.button, .signout-button),
+#campaign-operations-overlay :is(.button, .signout-button) {
+  min-height: 40px;
+  padding-inline: 20px;
+}
+
+#app :is(.button--primary, .signout-button),
+#overlay-root .button--primary,
+#campaign-operations-overlay .button--primary {
+  border: 1px solid var(--md-sys-color-primary);
+  background: var(--md-sys-color-primary);
+  color: var(--md-sys-color-on-primary);
+}
+
+#app :is(.button--primary, .signout-button):hover:not(:disabled),
+#overlay-root .button--primary:hover:not(:disabled),
+#campaign-operations-overlay .button--primary:hover:not(:disabled) {
+  border-color: var(--md-comp-action-primary-hover);
+  background: var(--md-comp-action-primary-hover);
+  color: var(--md-sys-color-on-primary);
+  box-shadow: var(--md-sys-elevation-level1);
+}
+
+#app :is(.button--secondary, .button--danger),
+#overlay-root :is(.button--secondary, .button--danger),
+#campaign-operations-overlay :is(.button--secondary, .button--danger) {
+  border: 1px solid var(--md-sys-color-outline);
+  background: transparent;
+  color: var(--md-sys-color-primary);
+}
+
+#app :is(.button--secondary, .button--danger):hover:not(:disabled),
+#overlay-root :is(.button--secondary, .button--danger):hover:not(:disabled),
+#campaign-operations-overlay :is(.button--secondary, .button--danger):hover:not(:disabled) {
+  border-color: var(--md-sys-color-primary);
+  background: var(--md-sys-state-hover);
+  color: var(--md-sys-color-primary);
+}
+
+#app :is(.button--soft, .button--tonal),
+#overlay-root :is(.button--soft, .button--tonal),
+#campaign-operations-overlay :is(.button--soft, .button--tonal) {
+  border: 1px solid transparent;
+  background: var(--md-sys-color-secondary-container);
+  color: var(--md-sys-color-on-secondary-container);
+}
+
+#app :is(.button--soft, .button--tonal):hover:not(:disabled),
+#overlay-root :is(.button--soft, .button--tonal):hover:not(:disabled),
+#campaign-operations-overlay :is(.button--soft, .button--tonal):hover:not(:disabled) {
+  background: var(--md-sys-color-surface-container-highest);
+}
+
+#app .button--small,
+#overlay-root .button--small,
+#campaign-operations-overlay .button--small {
+  min-height: 32px;
+  padding-inline: 12px;
+  font-size: 12px;
+}
+
+#app .icon-button,
+#overlay-root .icon-button,
+#campaign-operations-overlay .icon-button {
+  display: inline-grid;
+  width: 40px;
+  min-width: 40px;
+  height: 40px;
+  min-height: 40px;
+  place-items: center;
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--md-sys-color-on-surface-variant);
+  padding: 0;
+}
+
+#app .icon-button:hover:not(:disabled),
+#overlay-root .icon-button:hover:not(:disabled),
+#campaign-operations-overlay .icon-button:hover:not(:disabled) {
+  background: var(--md-sys-state-hover);
+  color: var(--md-sys-color-on-surface);
+}
+
+@media (pointer: coarse) {
+  #app .icon-button,
+  #overlay-root .icon-button,
+  #campaign-operations-overlay .icon-button {
+    width: 48px;
+    min-width: 48px;
+    height: 48px;
+    min-height: 48px;
+  }
+
+  #app :is(.button, .signout-button),
+  #overlay-root :is(.button, .signout-button),
+  #campaign-operations-overlay :is(.button, .signout-button) {
+    min-height: 48px;
+  }
+}
+
+/* Text inputs keep visible labels, a neutral outline and a high-contrast focus. */
+#app :is(input:not([type="checkbox"]):not([type="radio"]):not([type="range"]):not([type="hidden"]):not([type="button"]):not([type="submit"]):not([type="reset"]), select, textarea),
+#overlay-root :is(input:not([type="checkbox"]):not([type="radio"]):not([type="range"]):not([type="hidden"]):not([type="button"]):not([type="submit"]):not([type="reset"]), select, textarea),
+#campaign-operations-overlay :is(input:not([type="checkbox"]):not([type="radio"]):not([type="range"]):not([type="hidden"]):not([type="button"]):not([type="submit"]):not([type="reset"]), select, textarea) {
+  border: 1px solid var(--md-sys-color-outline);
+  border-radius: var(--md-sys-shape-corner-extra-small);
+  background: var(--md-sys-color-surface);
+  color: var(--md-sys-color-on-surface);
+  font-family: inherit;
+}
+
+#app :is(input:not([type="checkbox"]):not([type="radio"]):not([type="range"]):not([type="hidden"]):not([type="button"]):not([type="submit"]):not([type="reset"]), select, textarea)::placeholder,
+#overlay-root :is(input:not([type="checkbox"]):not([type="radio"]):not([type="range"]):not([type="hidden"]):not([type="button"]):not([type="submit"]):not([type="reset"]), select, textarea)::placeholder,
+#campaign-operations-overlay :is(input:not([type="checkbox"]):not([type="radio"]):not([type="range"]):not([type="hidden"]):not([type="button"]):not([type="submit"]):not([type="reset"]), select, textarea)::placeholder {
+  color: var(--md-sys-color-on-surface-variant);
+  opacity: 1;
+}
+
+#app :is(input, select, textarea):focus,
+#overlay-root :is(input, select, textarea):focus,
+#campaign-operations-overlay :is(input, select, textarea):focus {
+  border-color: var(--md-sys-color-primary);
+  outline: 0;
+  box-shadow: inset 0 -2px var(--md-sys-color-primary);
+}
+
+#app :is(input[type="checkbox"], input[type="radio"], input[type="range"]),
+#overlay-root :is(input[type="checkbox"], input[type="radio"], input[type="range"]),
+#campaign-operations-overlay :is(input[type="checkbox"], input[type="radio"], input[type="range"]) {
+  accent-color: var(--md-sys-color-primary);
+}
+
+#app :is([aria-invalid="true"], [aria-invalid="true"] input, input[aria-invalid="true"]),
+#overlay-root :is([aria-invalid="true"], [aria-invalid="true"] input, input[aria-invalid="true"]),
+#campaign-operations-overlay :is([aria-invalid="true"], [aria-invalid="true"] input, input[aria-invalid="true"]) {
+  border-color: var(--md-sys-color-error);
+}
+
+#app :is(.form-stack label > span, .finder-controls label > span, .manual-choice-field > legend, .manual-fieldset legend),
+#overlay-root :is(.form-stack label > span, .finder-controls label > span, .manual-choice-field > legend, .manual-fieldset legend),
+#campaign-operations-overlay :is(.form-stack label > span, .finder-controls label > span, .manual-choice-field > legend, .manual-fieldset legend) {
+  color: var(--md-sys-color-on-surface-variant);
+  font-size: 12px;
+  font-weight: 500;
+}
+
+#app :is(.cl-toolbar .cl-costco-toggle input, .research-costco-toggle input) {
+  appearance: none;
+  position: relative;
+  width: 52px;
+  min-width: 52px;
+  height: 32px;
+  min-height: 32px;
+  margin: 0;
+  border: 2px solid var(--md-sys-color-outline);
+  border-radius: var(--md-sys-shape-corner-full);
+  background: var(--md-sys-color-surface-container-highest);
+  transition: background-color var(--md-sys-motion-duration-short) var(--md-sys-motion-easing-standard),
+    border-color var(--md-sys-motion-duration-short) var(--md-sys-motion-easing-standard);
+}
+
+#app :is(.cl-toolbar .cl-costco-toggle input, .research-costco-toggle input)::after {
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  width: 16px;
+  height: 16px;
+  border-radius: var(--md-sys-shape-corner-full);
+  background: var(--md-sys-color-outline);
+  content: "";
+  transition: transform var(--md-sys-motion-duration-short) var(--md-sys-motion-easing-standard),
+    width var(--md-sys-motion-duration-short) var(--md-sys-motion-easing-standard),
+    height var(--md-sys-motion-duration-short) var(--md-sys-motion-easing-standard),
+    background-color var(--md-sys-motion-duration-short) var(--md-sys-motion-easing-standard);
+}
+
+#app :is(.cl-toolbar .cl-costco-toggle input, .research-costco-toggle input):checked {
+  border-color: var(--md-sys-color-primary);
+  background: var(--md-sys-color-primary);
+}
+
+#app :is(.cl-toolbar .cl-costco-toggle input, .research-costco-toggle input):checked::after {
+  width: 24px;
+  height: 24px;
+  transform: translateX(16px);
+  background: var(--md-sys-color-on-primary);
+}
+
+#app :is(.cl-toolbar .cl-costco-toggle input, .research-costco-toggle input):focus-visible {
+  outline: 2px solid var(--md-sys-color-primary);
+  outline-offset: 3px;
+  box-shadow: 0 0 0 2px var(--md-sys-color-surface);
+}
+
+#app :is(button, input, select, textarea):disabled,
+#overlay-root :is(button, input, select, textarea):disabled,
+#campaign-operations-overlay :is(button, input, select, textarea):disabled,
+#app [aria-disabled="true"],
+#overlay-root [aria-disabled="true"],
+#campaign-operations-overlay [aria-disabled="true"] {
+  cursor: not-allowed;
+  opacity: 0.58;
+}
+
+/* Grouped surfaces use subtle tonal containment; rows remain rows, not cards. */
+#app :is(.panel, .profile-hero, .campaign-hero, .report-hero, .report-document, .report-notice, .system-card, .workspace-section, .template-card, .video-tracking-card, .manual-social-profile-row, .communication-summary > div),
+#overlay-root :is(.panel, .profile-hero, .campaign-hero, .report-hero, .system-card, .workspace-section, .template-card),
+#campaign-operations-overlay :is(.panel, .profile-hero, .campaign-hero, .report-hero, .system-card, .workspace-section, .template-card) {
+  border-color: var(--md-sys-color-outline-variant);
+  border-radius: var(--md-sys-shape-corner-medium);
+  background: var(--md-sys-color-surface-container-lowest);
+  box-shadow: var(--md-sys-elevation-level0);
+}
+
+#app :is(.metric-card, .summary-strip, .metric-grid, .campaign-context-grid article, .video-summary-grid article, .video-metric-strip, .manual-assignment-row),
+#overlay-root :is(.metric-card, .summary-strip, .metric-grid),
+#campaign-operations-overlay :is(.metric-card, .summary-strip, .metric-grid) {
+  border-color: var(--md-sys-color-outline-variant);
+  border-radius: var(--md-sys-shape-corner-small);
+  background: var(--md-sys-color-surface-container-low);
+}
+
+#app :is(.panel-heading, .workspace-section-header, .section-heading-row, .drawer-header, .drawer-footer, .modal-header, .modal-footer),
+#overlay-root :is(.panel-heading, .workspace-section-header, .section-heading-row, .drawer-header, .drawer-footer, .modal-header, .modal-footer),
+#campaign-operations-overlay :is(.panel-heading, .workspace-section-header, .section-heading-row, .drawer-header, .drawer-footer, .modal-header, .modal-footer) {
+  border-color: var(--md-sys-color-outline-variant);
+}
+
+/* Dense creator and campaign lists keep row layout and gain tonal hover/selection. */
+#app :is(.campaign-table-wrap, .table-scroll, .data-table, .campaign-list-panel, .campaign-table, .creator-table),
+#overlay-root :is(.campaign-table-wrap, .table-scroll, .data-table, .campaign-list-panel, .campaign-table, .creator-table),
+#campaign-operations-overlay :is(.campaign-table-wrap, .table-scroll, .data-table, .campaign-list-panel, .campaign-table, .creator-table) {
+  border-color: var(--md-sys-color-outline-variant);
+  background: var(--md-sys-color-surface);
+}
+
+#app :is(.campaign-table th, .campaign-table .table-head, .table-head, table thead th),
+#overlay-root :is(.campaign-table th, .campaign-table .table-head, .table-head, table thead th),
+#campaign-operations-overlay :is(.campaign-table th, .campaign-table .table-head, .table-head, table thead th) {
+  background: var(--md-sys-color-surface-container-low);
+  color: var(--md-sys-color-on-surface-variant);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+}
+
+#app :is(.campaign-table td, .campaign-table th, .campaign-table .table-row, .table-row, .simple-table > div),
+#overlay-root :is(.campaign-table td, .campaign-table th, .campaign-table .table-row, .table-row, .simple-table > div),
+#campaign-operations-overlay :is(.campaign-table td, .campaign-table th, .campaign-table .table-row, .table-row, .simple-table > div) {
+  border-color: var(--md-sys-color-outline-variant);
+}
+
+#app :is(.campaign-table tbody tr:hover, .campaign-table button.table-row:hover, .table-button:hover, .source-row:hover, .action-row:hover, .mini-creator:hover, .stack-row:hover, .search-result:hover, .manual-choice-option:hover),
+#overlay-root :is(.campaign-table tbody tr:hover, .campaign-table button.table-row:hover, .table-button:hover, .source-row:hover, .action-row:hover, .mini-creator:hover, .stack-row:hover, .search-result:hover, .manual-choice-option:hover),
+#campaign-operations-overlay :is(.campaign-table tbody tr:hover, .campaign-table button.table-row:hover, .table-button:hover, .source-row:hover, .action-row:hover, .mini-creator:hover, .stack-row:hover, .search-result:hover, .manual-choice-option:hover) {
+  background: var(--md-sys-state-hover);
+}
+
+#app :is(.campaign-table tbody tr.is-selected, .source-row.is-selected, .search-result.is-active, .is-drop-target),
+#overlay-root :is(.campaign-table tbody tr.is-selected, .source-row.is-selected, .search-result.is-active, .is-drop-target),
+#campaign-operations-overlay :is(.campaign-table tbody tr.is-selected, .source-row.is-selected, .search-result.is-active, .is-drop-target) {
+  background: var(--md-sys-color-secondary-container);
+  color: var(--md-sys-color-on-secondary-container);
+}
+
+/* Chips represent filters, suggestions or saved views; they are not main actions. */
+#app :is(.saved-view, .filter-chip, .saved-views button, .campaign-filter-chip, .tag-wrap em, .badge, .video-state, .campaign-creator-type),
+#overlay-root :is(.saved-view, .filter-chip, .saved-views button, .campaign-filter-chip, .tag-wrap em, .badge, .video-state, .campaign-creator-type),
+#campaign-operations-overlay :is(.saved-view, .filter-chip, .saved-views button, .campaign-filter-chip, .tag-wrap em, .badge, .video-state, .campaign-creator-type) {
+  border-color: var(--md-sys-color-outline);
+  border-radius: var(--md-sys-shape-corner-small);
+  color: var(--md-sys-color-on-surface-variant);
+}
+
+#app :is(.saved-view, .filter-chip, .saved-views button, .campaign-filter-chip) {
+  min-height: 32px;
+  background: var(--md-sys-color-surface);
+  font-size: 12px;
+  letter-spacing: normal;
+  text-transform: none;
+  transition: background-color var(--md-sys-motion-duration-short) var(--md-sys-motion-easing-standard),
+    border-color var(--md-sys-motion-duration-short) var(--md-sys-motion-easing-standard);
+}
+
+#app :is(.saved-view, .filter-chip, .saved-views button, .campaign-filter-chip):hover {
+  background: var(--md-sys-color-surface-container-high);
+}
+
+#app :is(.saved-view.is-active, .filter-chip.is-active, .saved-views button.is-active, .campaign-filter-chip[aria-pressed="true"]) {
+  border-color: var(--md-sys-color-secondary);
+  background: var(--md-sys-color-secondary-container);
+  color: var(--md-sys-color-on-secondary-container);
+  font-weight: 500;
+}
+
+/* Tabs retain their existing navigation semantics and show a clear selected state. */
+#app :is(.tabs, .seeding-tab-list, .cl-profile-tabs, .co-tabs) {
+  border-color: var(--md-sys-color-outline-variant);
+  gap: 0;
+}
+
+#app :is(.tabs button, .seeding-tab-list button, .cl-profile-tabs button, .co-tabs button) {
+  min-height: 48px;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  border-radius: 0;
+  background: transparent;
+  color: var(--md-sys-color-on-surface-variant);
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 500;
+  padding: 12px 16px 10px;
+}
+
+#app :is(.tabs button:hover, .seeding-tab-list button:hover, .cl-profile-tabs button:hover, .co-tabs button:hover) {
+  background: var(--md-sys-state-hover);
+  color: var(--md-sys-color-on-surface);
+}
+
+#app :is(.tabs button.is-active, .tabs button[aria-selected="true"], .seeding-tab-list button[aria-selected="true"], .cl-profile-tabs button[aria-current="page"], .co-tabs button[aria-pressed="true"]) {
+  border-bottom-color: var(--md-sys-color-primary);
+  background: transparent;
+  color: var(--md-sys-color-on-surface);
+}
+
+#app :is(.tabs button, .seeding-tab-list button, .cl-profile-tabs button, .co-tabs button):focus-visible {
+  outline-offset: -3px;
+}
+
+/* Menus, select lists and disclosure rows. */
+#app :is(.manual-choice-dropdown, .saved-view-item, [role="menu"], [role="listbox"]),
+#overlay-root :is(.manual-choice-dropdown, .saved-view-item, [role="menu"], [role="listbox"]),
+#campaign-operations-overlay :is(.manual-choice-dropdown, .saved-view-item, [role="menu"], [role="listbox"]) {
+  border-color: var(--md-sys-color-outline-variant);
+  border-radius: var(--md-sys-shape-corner-small);
+  background: var(--md-sys-color-surface-container-lowest);
+  box-shadow: var(--md-sys-elevation-level2);
+}
+
+#app :is(.manual-choice-dropdown[open], [role="menu"] [role="menuitem"], [role="listbox"] [role="option"]),
+#overlay-root :is(.manual-choice-dropdown[open], [role="menu"] [role="menuitem"], [role="listbox"] [role="option"]),
+#campaign-operations-overlay :is(.manual-choice-dropdown[open], [role="menu"] [role="menuitem"], [role="listbox"] [role="option"]) {
+  color: var(--md-sys-color-on-surface);
+}
+
+#app :is(.manual-choice-option, [role="menu"] [role="menuitem"], [role="listbox"] [role="option"]) {
+  min-height: 40px;
+  border-radius: var(--md-sys-shape-corner-extra-small);
+}
+
+#app :is(.manual-choice-option input, input[type="checkbox"], input[type="radio"]) {
+  accent-color: var(--md-sys-color-primary);
+}
+
+/* Status chips retain labels and tonal differences; color is not the only cue. */
+#app .badge--good,
+#overlay-root .badge--good,
+#campaign-operations-overlay .badge--good,
+#app .video-state--good {
+  border-color: var(--md-sys-color-outline-variant);
+  background: var(--md-sys-color-surface-container);
+  color: var(--md-sys-color-on-surface);
+}
+
+#app :is(.badge--warn, .badge--neutral, .badge--muted, .video-state--warn, .video-state--pending, .video-state--error, .campaign-creator-type--paid, .campaign-creator-type--seeding, .campaign-creator-type--bsm) {
+  border-color: var(--md-sys-color-outline-variant);
+  background: var(--md-sys-color-surface-container-high);
+  color: var(--md-sys-color-on-surface);
+}
+
+#app :is(.system-message--error, .research-error, .video-state--error, .co-error, .outreach-error, [role="alert"]),
+#overlay-root :is(.system-message--error, .research-error, .video-state--error, [role="alert"]),
+#campaign-operations-overlay :is(.system-message--error, .research-error, .video-state--error, [role="alert"]) {
+  border-color: var(--md-sys-color-outline);
+  background-color: var(--md-sys-color-error-container);
+  color: var(--md-sys-color-on-error-container);
+}
+
+/* Dialogs and side sheets use elevation only where content overlays the workspace. */
+.drawer-backdrop,
+.modal-backdrop,
+.cal-backdrop {
+  background: rgb(0 0 0 / 40%);
+}
+
+:is(.drawer-backdrop, .modal-backdrop, .cal-backdrop)[data-m3-enter] {
+  animation: md3-scrim-enter var(--md-sys-motion-duration-standard) var(--md-sys-motion-easing-standard) both;
+}
+
+#overlay-root .drawer,
+#overlay-root .modal,
+#campaign-operations-overlay .drawer,
+#campaign-operations-overlay .modal,
+#app .cal-dialog,
+dialog[open] {
+  border-color: var(--md-sys-color-outline-variant);
+  border-radius: var(--md-sys-shape-corner-extra-large);
+  background: var(--md-sys-color-surface-container-high);
+  color: var(--md-sys-color-on-surface);
+  box-shadow: var(--md-sys-elevation-level3);
+}
+
+#overlay-root .drawer[data-m3-enter],
+#campaign-operations-overlay .drawer[data-m3-enter] {
+  animation: md3-sheet-enter var(--md-sys-motion-duration-overlay) var(--md-sys-motion-easing-standard) both;
+}
+
+#overlay-root .drawer-header,
+#overlay-root .drawer-footer,
+#campaign-operations-overlay .drawer-header,
+#campaign-operations-overlay .drawer-footer {
+  background: var(--md-sys-color-surface-container-high);
+}
+
+#app .modal[data-m3-enter],
+#overlay-root .modal[data-m3-enter],
+#campaign-operations-overlay .modal[data-m3-enter],
+#app .cal-dialog[data-m3-enter],
+dialog[open][data-m3-enter] {
+  animation: md3-dialog-enter var(--md-sys-motion-duration-overlay) var(--md-sys-motion-easing-standard) both;
+}
+
+#toast-root .toast,
+#app .toast {
+  border: 1px solid var(--md-sys-color-inverse-surface);
+  border-radius: var(--md-sys-shape-corner-small);
+  background: var(--md-sys-color-inverse-surface);
+  color: var(--md-sys-color-inverse-on-surface);
+  box-shadow: var(--md-sys-elevation-level2);
+}
+
+#app :is(.system-message--error, .system-message--success, .empty-state, .permission-callout, .privacy-note, .integration-boundary) {
+  border-radius: var(--md-sys-shape-corner-small);
+}
+
+/* Loading feedback is reserved for loading affordances, never repeated content rows. */
+#app .system-loader,
+#overlay-root .system-loader {
+  border-color: var(--md-sys-color-outline-variant);
+  border-top-color: var(--md-sys-color-primary);
+}
+
+#app :is(.progress-track, progress),
+#overlay-root :is(.progress-track, progress),
+#campaign-operations-overlay :is(.progress-track, progress) {
+  accent-color: var(--md-sys-color-primary);
+}
+
+#app .progress-track {
+  overflow: hidden;
+  border-radius: var(--md-sys-shape-corner-full);
+  background: var(--md-sys-color-surface-container-highest);
+}
+
+#app .progress-track i {
+  border-radius: var(--md-sys-shape-corner-full);
+  background: var(--md-sys-color-primary);
+}
+
+@keyframes md3-scrim-enter {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes md3-sheet-enter {
+  from { opacity: 0.96; transform: translateX(18px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes md3-dialog-enter {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@media (max-width: 620px) {
+  #overlay-root .drawer,
+  #campaign-operations-overlay .drawer {
+    inset: auto 0 0;
+    width: 100%;
+    max-width: none;
+    max-height: min(92dvh, 900px);
+    border-radius: var(--md-sys-shape-corner-extra-large) var(--md-sys-shape-corner-extra-large) 0 0;
+
+  }
+
+  #overlay-root .drawer--wide,
+  #overlay-root .drawer--review,
+  #campaign-operations-overlay .drawer--wide,
+  #campaign-operations-overlay .drawer--review {
+    width: 100%;
+  }
+
+  #overlay-root .drawer[data-m3-enter],
+  #campaign-operations-overlay .drawer[data-m3-enter] {
+    animation-name: md3-sheet-enter-mobile;
+  }
+
+  #app .main-content {
+    padding-inline: clamp(16px, 4vw, 24px);
+  }
+}
+
+@keyframes md3-sheet-enter-mobile {
+  from { opacity: 0.96; transform: translateY(18px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Applied typography roles: the botanical comparison can swap these two reference tokens. */
+body,
+button,
+input,
+select,
+textarea,
+table {
+  font-family: var(--md-ref-typeface-plain);
+}
+
+#app :is(h1, h2, h3),
+#overlay-root :is(h1, h2, h3),
+#campaign-operations-overlay :is(h1, h2, h3) {
+  font-family: var(--md-ref-typeface-brand);
+}
+
+#app h1,
+#overlay-root h1,
+#campaign-operations-overlay h1 {
+  font-size: var(--md-sys-typescale-headline-large-size, 32px);
+  line-height: var(--md-sys-typescale-headline-large-line-height, 40px);
+  letter-spacing: -0.02em;
+}
+
+#app h2,
+#overlay-root h2,
+#campaign-operations-overlay h2 {
+  font-size: var(--md-sys-typescale-title-large-size, 22px);
+  line-height: var(--md-sys-typescale-title-large-line-height, 28px);
+  letter-spacing: 0;
+}
+
+#app h3,
+#overlay-root h3,
+#campaign-operations-overlay h3 {
+  font-size: var(--md-sys-typescale-title-medium-size, 16px);
+  line-height: var(--md-sys-typescale-title-medium-line-height, 24px);
+}
+
+/* Explicit M3 component pass for the current operations and creator surfaces. */
+body #app .ops-workspace,
+body #app .ops-editor,
+body #app .ops-conversation,
+body #campaign-operations-overlay :is(.ops-workspace, .ops-editor, .ops-conversation) {
+  --ops-paper: var(--md-sys-color-surface-container-lowest);
+  --ops-ink: var(--md-sys-color-on-surface);
+  --ops-muted: var(--md-sys-color-on-surface-variant);
+  --ops-rule: var(--md-sys-color-outline-variant);
+  --ops-accent: var(--md-sys-color-primary);
+  --ops-success: var(--md-sys-color-on-surface-variant);
+  --ops-risk: var(--md-sys-color-error);
+  --ops-soft: var(--md-sys-color-surface-container-low);
+  color: var(--md-sys-color-on-surface);
+}
+
+body #app .ops-heading h1 {
+  font-size: clamp(26px, 2.1vw, var(--md-sys-typescale-headline-large-size, 32px));
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  margin: 4px 0 8px;
+}
+
+body #app .ops-section-heading h2,
+body #app .ops-sidebar h2 {
+  font-size: var(--md-sys-typescale-title-large-size, 22px);
+  line-height: var(--md-sys-typescale-title-large-line-height, 28px);
+}
+
+body #app :is(.ops-toolbar, .ops-automations-toolbar) {
+  border-color: var(--md-sys-color-outline-variant);
+}
+
+body #app .ops-filter {
+  color: var(--md-sys-color-on-surface-variant);
+  font-size: 12px;
+  font-weight: 500;
+}
+
+body #app .ops-filter :is(input, select) {
+  min-height: 40px;
+  border: 1px solid var(--md-sys-color-outline);
+  border-radius: var(--md-sys-shape-corner-extra-small);
+  background: var(--md-sys-color-surface);
+  color: var(--md-sys-color-on-surface);
+  padding: 8px 12px;
+  font: inherit;
+  font-size: 14px;
+}
+
+body #app .ops-table-wrap,
+body #app .ops-automation-enrollment {
+  border-color: var(--md-sys-color-outline-variant);
+  border-radius: var(--md-sys-shape-corner-medium);
+  background: var(--md-sys-color-surface);
+}
+
+body #app .ops-table {
+  color: var(--md-sys-color-on-surface);
+  font-size: 14px;
+}
+
+body #app .ops-table :is(th, td) {
+  border-color: var(--md-sys-color-outline-variant);
+  padding: 14px 16px;
+  line-height: 1.5;
+}
+
+body #app .ops-table thead th,
+body #app .ops-table .ops-sticky,
+body #app .ops-table thead .ops-sticky {
+  background: var(--md-sys-color-surface-container-low);
+  color: var(--md-sys-color-on-surface-variant);
+}
+
+body #app .ops-table tbody tr:hover > *,
+body #app .ops-table tr.is-highlighted > * {
+  background: var(--md-sys-color-surface-container);
+  color: var(--md-sys-color-on-surface);
+}
+
+body #app .ops-segmented {
+  gap: 2px;
+  overflow: hidden;
+  border: 1px solid var(--md-sys-color-outline-variant);
+  border-radius: var(--md-sys-shape-corner-full);
+  background: var(--md-sys-color-surface-container);
+  padding: 3px;
+}
+
+body #app .ops-segmented button {
+  min-height: 40px;
+  border-radius: var(--md-sys-shape-corner-full);
+  background: transparent;
+  color: var(--md-sys-color-on-surface-variant);
+  padding-inline: 14px;
+  font-size: 13px;
+}
+
+body #app .ops-segmented button[aria-pressed="true"] {
+  background: var(--md-sys-color-primary);
+  color: var(--md-sys-color-on-primary);
+  font-weight: 500;
+}
+
+body #app .ops-workspace .ops-icon-button {
+  width: 40px;
+  min-width: 40px;
+  height: 40px;
+  min-height: 40px;
+  border: 0;
+  border-radius: var(--md-sys-shape-corner-full);
+  background: transparent;
+  color: var(--md-sys-color-on-surface-variant);
+  transition: background-color var(--md-sys-motion-duration-short) var(--md-sys-motion-easing-standard),
+    color var(--md-sys-motion-duration-short) var(--md-sys-motion-easing-standard);
+}
+
+body #app .ops-workspace .ops-icon-button:hover:not(:disabled) {
+  background: var(--md-sys-state-hover);
+  color: var(--md-sys-color-on-surface);
+}
+
+body #app .ops-workspace .ops-icon-button .material-icon {
+  width: 24px;
+  height: 24px;
+  flex-basis: 24px;
+}
+
+body #app .ops-tag,
+body #app .ops-automation-status {
+  display: inline-flex;
+  min-height: 28px;
+  align-items: center;
+  border: 1px solid var(--md-sys-color-outline);
+  border-radius: var(--md-sys-shape-corner-small);
+  background: var(--md-sys-color-surface-container-low);
+  color: var(--md-sys-color-on-surface);
+  padding: 4px 10px;
+  font-size: 12px;
+  line-height: 1.35;
+  font-weight: 500;
+}
+
+body #app :is(.ops-tag--paid, .ops-tag--ready, .ops-automation-status--running) {
+  border-color: var(--md-sys-color-outline);
+  background: var(--md-sys-color-secondary-container);
+  color: var(--md-sys-color-on-secondary-container);
+}
+
+body #app :is(.ops-tag--unpaid, .ops-tag--urgent, .ops-tag--missing, .ops-automation-status--failed, .ops-error) {
+  border-color: var(--md-sys-color-error);
+  background: var(--md-sys-color-error-container);
+  color: var(--md-sys-color-on-error-container);
+}
+
+body #app :is(.ops-card, .ops-sidebar, .ops-sidebar-section, .ops-automation, .ops-automation-channel, .ops-resource-row, .ops-document-card) {
+  border-color: var(--md-sys-color-outline-variant);
+  border-radius: var(--md-sys-shape-corner-medium);
+  background: var(--md-sys-color-surface-container-lowest);
+  color: var(--md-sys-color-on-surface);
+  box-shadow: var(--md-sys-elevation-level0);
+}
+
+body #app :is(.ops-card, .ops-automation) {
+  padding: 20px;
+}
+
+body #app .ops-card.is-highlighted {
+  outline: 2px solid var(--md-sys-color-primary);
+  outline-offset: 2px;
+}
+
+body #app :is(.ops-note, .ops-template-note, .ops-count, .ops-muted) {
+  color: var(--md-sys-color-on-surface-variant);
+}
+
+body #app .ops-notice {
+  border-color: var(--md-sys-color-outline-variant);
+  border-radius: var(--md-sys-shape-corner-small);
+  background: var(--md-sys-color-surface-container-high);
+  color: var(--md-sys-color-on-surface);
+  padding: 14px 16px;
+  line-height: 1.5;
+}
+
+body #app .ops-empty {
+  border-color: var(--md-sys-color-outline);
+  border-radius: var(--md-sys-shape-corner-medium);
+  background: var(--md-sys-color-surface-container-low);
+  color: var(--md-sys-color-on-surface);
+}
+
+/* Creator CRM cards, filters, profile tabs and dense data tables share the same roles. */
+body #app .cl-library {
+  color: var(--md-sys-color-on-surface);
+}
+
+body #app :is(.cl-header, .cl-profile-heading) h1 {
+  font-size: clamp(26px, 2vw, var(--md-sys-typescale-headline-large-size, 32px));
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+body #app :is(.cl-toolbar, .cl-summary > div, .cl-section, .cl-accounts article, .cl-fees article, .cl-deal-detail, .cl-overlap-outcome) {
+  border-color: var(--md-sys-color-outline-variant);
+  border-radius: var(--md-sys-shape-corner-medium);
+  background: var(--md-sys-color-surface-container-lowest);
+  color: var(--md-sys-color-on-surface);
+  box-shadow: var(--md-sys-elevation-level0);
+}
+
+body #app .cl-toolbar :is(input, select) {
+  min-height: 40px;
+  border: 1px solid var(--md-sys-color-outline);
+  border-radius: var(--md-sys-shape-corner-extra-small);
+  background: var(--md-sys-color-surface);
+  color: var(--md-sys-color-on-surface);
+  font-family: var(--md-ref-typeface-plain);
+  font-size: 14px;
+}
+
+body #app :is(.cl-card, .cl-portfolio-card, .cl-deliverable, .cl-campaign-target, .cl-campaign-tray) {
+  border-color: var(--md-sys-color-outline-variant);
+  border-radius: var(--md-sys-shape-corner-medium);
+  background: var(--md-sys-color-surface-container-lowest);
+  color: var(--md-sys-color-on-surface);
+  box-shadow: var(--md-sys-elevation-level0);
+}
+
+body #app :is(.cl-avatar, .cl-summary > div, .cl-performance > div, .cl-follower, .cl-platform) {
+  border-color: var(--md-sys-color-outline-variant);
+  background: var(--md-sys-color-surface-container);
+  color: var(--md-sys-color-on-surface);
+}
+
+body #app :is(.cl-muted, .cl-header p, .cl-result-bar, .cl-compact-followers, .cl-name small, .cl-card-footer, .cl-library small, .cl-accounts small, .cl-fees small, .cl-profile-owner, .cl-history p, .cl-activity li time, .cl-activity li span, .cl-activity li a, .cl-evidence-label, .cl-campaign-tray p, .cl-campaign-target small) {
+  color: var(--md-sys-color-on-surface-variant);
+}
+
+body #app :is(.cl-platform, .cl-campaign-type, .cl-brand-badge, .cl-snapshot, .cl-worked-campaign, .cl-commercial-latest, .cl-deal-evidence, .cl-overlap, .cl-overlap-review) {
+  border-color: var(--md-sys-color-outline-variant);
+  background: var(--md-sys-color-surface-container-low);
+  color: var(--md-sys-color-on-surface);
+}
+
+body #app :is(.cl-library .cl-table-wrap, .cl-library .cl-commercial-table-wrap) {
+  border-color: var(--md-sys-color-outline-variant);
+  border-radius: var(--md-sys-shape-corner-medium);
+  background: var(--md-sys-color-surface);
+}
+
+body #app :is(.cl-library .cl-table, .cl-library .cl-commercial-table) {
+  color: var(--md-sys-color-on-surface);
+}
+
+body #app :is(.cl-library .cl-table thead th, .cl-library .cl-commercial-table thead th) {
+  background: var(--md-sys-color-surface-container-low);
+  color: var(--md-sys-color-on-surface-variant);
+}
+
+body #app :is(.cl-library .cl-table :is(th, td), .cl-library .cl-commercial-table :is(th, td)) {
+  border-color: var(--md-sys-color-outline-variant);
+}
+
+body #app :is(.cl-library .cl-table tr:hover > *, .cl-library .cl-commercial-table tr:hover > *) {
+  background: var(--md-sys-color-surface-container);
+}
+
+body #app :is(.cl-commercial-tabs button, .cl-view-switch button, .cl-commercial-filters button) {
+  min-height: 40px;
+  border-color: var(--md-sys-color-outline);
+  border-radius: var(--md-sys-shape-corner-full);
+  background: var(--md-sys-color-surface);
+  color: var(--md-sys-color-on-surface);
+}
+
+body #app :is(.cl-commercial-tabs button[aria-pressed="true"], .cl-view-switch button[aria-pressed="true"]) {
+  border-color: var(--md-sys-color-primary);
+  background: var(--md-sys-color-primary);
+  color: var(--md-sys-color-on-primary);
+}
+
+body #app .cl-brand-options label,
+body #app .cl-brand-filters label {
+  color: var(--md-sys-color-on-surface);
+}
+
+body #app .cl-brand-options label:has(input:checked) {
+  color: var(--md-sys-color-on-surface);
+  font-weight: 600;
+}
+
+/* Visible keyboard focus is shared by app and overlay controls; phase colors stay semantic. */
+#app :is(a, button, input, select, textarea, summary, [tabindex]:not([tabindex="-1"])):focus-visible,
+#overlay-root :is(a, button, input, select, textarea, summary, [tabindex]:not([tabindex="-1"])):focus-visible,
+#campaign-operations-overlay :is(a, button, input, select, textarea, summary, [tabindex]:not([tabindex="-1"])):focus-visible {
+  outline: 3px solid var(--md-sys-color-primary);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 1px var(--md-sys-color-surface);
+}
+
+body #app .ops-workspace :is(.ops-phase-step, .ops-card-phase-button, .ops-phase-dot) {
+  background: var(--phase-fill);
+  color: var(--phase-ink);
+}
+
+body #app .ops-workspace :is(.ops-phase-step, .ops-card-phase-button):focus-visible {
+  outline-style: solid;
+  outline-offset: 3px;
+}
+
+/* Keep the desktop rail useful at the existing tablet breakpoint; mobile keeps bottom navigation. */
+@media (max-width: 1120px) and (min-width: 721px) {
+  :root { --byou-sidebar-width: 88px; }
+  #app .sidebar { display: flex; width: 88px; padding-inline: 8px; }
+  #app .sidebar .nav-item > span:not(.nav-glyph),
+  #app .sidebar .user-card > span:not(.user-avatar) { display: block; }
+  #app .sidebar .signout-button { display: inline-flex; }
+}
+
+@media (max-width: 720px) {
+  :root { --byou-sidebar-width: 0px; }
+  #app .sidebar { display: none; }
+  #app .main-content { margin-left: 0; }
+}
+
+/* Match the existing operations specificity so its historical literals cannot bypass tokens. */
+body :is(#app, #campaign-operations-overlay) :is(.ops-workspace, .ops-editor, .ops-conversation, .ops-campaign-tray, .cl-header-actions, .ci-dialog) .button {
+  border-radius: var(--md-sys-shape-corner-full);
+  font-family: var(--md-ref-typeface-plain);
+  font-size: var(--md-sys-typescale-label-large-size);
+  min-height: 40px;
+  padding: 10px 20px;
+}
+body :is(#app, #campaign-operations-overlay) :is(.ops-workspace, .ops-editor, .ops-conversation, .ops-campaign-tray, .cl-header-actions, .ci-dialog) .button--primary {
+  color: var(--md-sys-color-on-primary);
+  background: var(--md-sys-color-primary);
+  border-color: var(--md-sys-color-primary);
+}
+body :is(#app, #campaign-operations-overlay) :is(.ops-workspace, .ops-editor, .ops-conversation, .ops-campaign-tray, .cl-header-actions, .ci-dialog) .button--primary:hover:not(:disabled) {
+  color: var(--md-sys-color-on-primary);
+  background: var(--md-comp-action-primary-hover);
+  border-color: var(--md-comp-action-primary-hover);
+}
+body :is(#app, #campaign-operations-overlay) :is(.ops-workspace, .ops-editor, .ops-conversation, .ops-campaign-tray, .cl-header-actions, .ci-dialog) .button--secondary {
+  color: var(--md-sys-color-primary);
+  background: transparent;
+  border-color: var(--md-sys-color-outline);
+}
+body :is(#app, #campaign-operations-overlay) :is(.ops-workspace, .ops-editor, .ops-conversation, .ops-campaign-tray, .cl-header-actions, .ci-dialog) .button--secondary:hover:not(:disabled) {
+  color: var(--md-sys-color-primary);
+  background: var(--md-sys-state-hover);
+  border-color: var(--md-sys-color-primary);
+}
+@media (pointer: coarse), (max-width: 720px) {
+  body :is(#app, #overlay-root, #campaign-operations-overlay) .button,
+  body #app .ops-workspace .ops-icon-button,
+  body #app .ops-filter :is(input, select) { min-height: 48px; }
+  body #app .ops-workspace .ops-icon-button { min-width: 48px; }
+  body :is(#app, #overlay-root, #campaign-operations-overlay) :is(input, select, textarea) { font-size: 16px; }
+}
+
+/* Top-level destinations fade; local edits and data refreshes do not replay entry. */
+#app .main-content[data-m3-view-enter] {
+  animation: m3-view-enter var(--md-sys-motion-duration-view) var(--md-sys-motion-easing-standard);
+}
+@keyframes m3-view-enter { from { opacity: 0; } to { opacity: 1; } }
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Compact tables, creator fees, file pickers, and the campaign selection tray. */
+body #app .ops-table .ops-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: var(--md-sys-spacing-2);
+}
+body #app .ops-table :is(.ops-actions .button, .ops-directory-actions .button, .ops-address-cell .button) {
+  box-sizing: border-box;
+  min-height: 36px;
+  padding: 8px 12px;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+body #app .ops-table .ops-icon-button {
+  width: 36px;
+  min-width: 36px;
+  height: 36px;
+  min-height: 36px;
+}
+body #app .ops-table .ops-directory-actions { min-width: 150px; }
+body #app .ops-table .ops-address-cell small:has(.ops-tag--missing) {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--md-sys-spacing-2);
+  margin-top: var(--md-sys-spacing-2);
+  white-space: normal;
+}
+body #app .ops-table .ops-address-cell small:has(.ops-tag--missing) br { display: none; }
+body #app .ops-table .ops-address-cell .ops-tag { flex: 0 0 auto; }
+body #app .ops-table .ops-address-cell .button { flex: 0 0 auto; margin: 0; }
+
+body #app .ops-campaign-tray-body {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--md-sys-spacing-2);
+}
+body #app .ops-campaign-tray-body > :is(h2, p) { margin-block: 0; }
+body #app .ops-campaign-create { justify-self: start; }
+body #app .ops-campaign-tray .ops-drop-targets {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--md-sys-spacing-2);
+  max-height: min(36vh, 320px);
+  min-height: 0;
+  overflow: auto;
+  overscroll-behavior: contain;
+  padding: var(--md-sys-spacing-1);
+  border: 1px solid var(--md-sys-color-outline-variant);
+  border-radius: var(--md-sys-shape-corner-medium);
+  background: var(--md-sys-color-surface-container-low);
+}
+body #app .ops-campaign-tray .ops-drop-target {
+  display: flex;
+  min-width: 0;
+  min-height: 66px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 8px 12px;
+  text-align: center;
+  white-space: normal;
+}
+body #app .ops-campaign-tray .ops-drop-target small { line-height: 1.35; }
+body #app .ops-campaign-clear { justify-self: start; }
+
+body #app .cl-photo-preview { margin-block: var(--md-sys-spacing-4); }
+body #app .cl-photo-editor { gap: var(--md-sys-spacing-4); }
+body #app .cl-commercial-fees { margin-block-start: var(--md-sys-spacing-4); }
+body #app .cl-commercial-fees h3 { margin-block: 0 var(--md-sys-spacing-3); }
+body #app .cl-commercial-table td .cl-fee-source { margin-block-start: var(--md-sys-spacing-1); }
+body #app .cl-commercial-table .cl-fee-source p { margin: 0; }
+body #app .cl-commercial-table .cl-overlap { display: block; margin-block-start: var(--md-sys-spacing-1); }
+
+body :is(#app, #overlay-root, #campaign-operations-overlay) input[type="file"]:not([hidden]) {
+  box-sizing: border-box;
+  display: block;
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  overflow: hidden;
+  font: inherit;
+}
+body :is(#app, #overlay-root, #campaign-operations-overlay) input[type="file"]:not([hidden])::file-selector-button {
+  max-width: 48%;
+  margin-inline-end: var(--md-sys-spacing-2);
+  padding: 8px 12px;
+  overflow: hidden;
+  border: 1px solid var(--md-sys-color-outline);
+  border-radius: var(--md-sys-shape-corner-full);
+  background: var(--md-sys-color-surface);
+  color: var(--md-sys-color-primary);
+  font: inherit;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  cursor: pointer;
+}
+body :is(#app, #overlay-root, #campaign-operations-overlay) :is(.ci-drop, .ci-evidence-file, .ops-file-upload, .ops-template-import) {
+  box-sizing: border-box;
+  min-width: 0;
+  max-width: 100%;
+}
+
+@media (pointer: coarse), (max-width: 720px) {
+  body #app .ops-table :is(.ops-actions .button, .ops-directory-actions .button, .ops-address-cell .button) { min-height: 48px; }
+  body #app .ops-table .ops-icon-button { width: 48px; min-width: 48px; height: 48px; min-height: 48px; }
+  body #app .ops-campaign-tray .ops-drop-target { min-height: 56px; }
+}
+/* Keep dense table and tray actions compact while retaining coarse-pointer targets. */
+body #app .ops-table :is(.ops-actions .button, .ops-directory-actions .button, .ops-address-cell .button) {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 6px 12px;
+}
+body #app .ops-table .button svg { width: 18px; height: 18px; flex: 0 0 18px; }
+body #app .ops-campaign-tray :is(.ops-campaign-create, .ops-campaign-clear).button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-height: 36px;
+  padding: 6px 12px;
+}
+body #app .ops-campaign-tray :is(.ops-campaign-create, .ops-campaign-clear).button svg {
+  width: 18px;
+  height: 18px;
+  flex: 0 0 18px;
+}
+@media (pointer: coarse), (max-width: 720px) {
+  body #app .ops-campaign-tray :is(.ops-campaign-create, .ops-campaign-clear).button { min-height: 48px; }
+}
+
+/* Creator filters, action menus, and button feedback follow M3 state roles. */
+body #app .cl-brand-filters {
+  box-sizing: border-box;
+  display: grid;
+  gap: var(--md-sys-spacing-2);
+  width: 100%;
+  min-width: 0;
+  padding: var(--md-sys-spacing-3);
+  border: 1px solid var(--md-sys-color-outline-variant);
+  border-radius: var(--md-sys-shape-corner-medium);
+  background: var(--md-sys-color-surface-container-low);
+  color: var(--md-sys-color-on-surface);
+}
+body #app .cl-brand-filters .cl-filter-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--md-sys-spacing-1) var(--md-sys-spacing-2);
+  width: 100%;
+  min-width: 0;
+  min-height: 40px;
+  padding: var(--md-sys-spacing-1) var(--md-sys-spacing-2);
+  border: 1px solid transparent;
+  border-radius: var(--md-sys-shape-corner-small);
+  background: transparent;
+  color: var(--md-sys-color-on-surface);
+  text-align: left;
+}
+body #app .cl-brand-filters .cl-filter-toggle small {
+  min-width: 0;
+  max-width: 100%;
+  color: var(--md-sys-color-on-surface-variant);
+  text-align: right;
+  overflow-wrap: anywhere;
+}
+body #app .cl-brand-options {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 180px), 1fr));
+  gap: var(--md-sys-spacing-1) var(--md-sys-spacing-2);
+  max-height: 220px;
+  min-width: 0;
+  padding: var(--md-sys-spacing-1);
+  overflow: auto;
+}
+body #app .cl-brand-options label {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  gap: var(--md-sys-spacing-2);
+  min-width: 0;
+  min-height: 40px;
+  padding: var(--md-sys-spacing-1) var(--md-sys-spacing-2);
+  border: 1px solid var(--md-sys-color-outline-variant);
+  border-radius: var(--md-sys-shape-corner-full);
+  background: var(--md-sys-color-surface-container-lowest);
+  color: var(--md-sys-color-on-surface);
+  overflow-wrap: anywhere;
+}
+body #app .cl-brand-options label:has(input:checked) {
+  border-color: var(--md-sys-color-outline);
+  background: var(--md-sys-color-secondary-container);
+  color: var(--md-sys-color-on-secondary-container);
+}
+body #app .cl-brand-options label input { flex: 0 0 auto; margin: 0; }
+body #app .cl-history-filters {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(180px, auto);
+  align-items: end;
+  gap: var(--md-sys-spacing-2);
+  min-width: 0;
+  margin-top: var(--md-sys-spacing-2);
+  padding: var(--md-sys-spacing-2);
+  border-radius: var(--md-sys-shape-corner-medium);
+  background: var(--md-sys-color-surface-container);
+}
+body #app .cl-history-filters label {
+  display: grid;
+  gap: var(--md-sys-spacing-1);
+  min-width: 0;
+  margin: 0;
+  color: var(--md-sys-color-on-surface-variant);
+  overflow-wrap: anywhere;
+}
+body #app .cl-history-filters select {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  min-height: 40px;
+  padding: var(--md-sys-spacing-1) var(--md-sys-spacing-2);
+  border: 1px solid var(--md-sys-color-outline);
+  border-radius: var(--md-sys-shape-corner-extra-small);
+  background: var(--md-sys-color-surface);
+  color: var(--md-sys-color-on-surface);
+}
+body #app .cl-history-filters > button {
+  box-sizing: border-box;
+  justify-self: center;
+  max-width: 100%;
+  min-width: 0;
+  min-height: 40px;
+  padding-inline: var(--md-sys-spacing-2);
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+body #app .cl-result-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--md-sys-spacing-2);
+  min-width: 0;
+  padding-block: var(--md-sys-spacing-2);
+}
+body #app .cl-result-bar .cl-sort { display: flex; align-items: center; gap: var(--md-sys-spacing-2); min-width: 0; margin: 0; }
+body #app .cl-result-bar .cl-sort select { box-sizing: border-box; max-width: min(100%, 300px); min-width: 0; }
+
+/* Creator-row Requests and More actions share a tonal M3 menu surface. */
+body #app .ops-creator-popover[popover]:popover-open,
+body #overlay-root .ops-creator-popover[popover]:popover-open,
+body #campaign-operations-overlay .ops-creator-popover[popover]:popover-open {
+  display: flex;
+  flex-direction: column;
+  gap: var(--md-sys-spacing-1);
+  box-sizing: border-box;
+  padding: var(--md-sys-spacing-2);
+  border: 1px solid var(--md-sys-color-outline-variant);
+  border-radius: var(--md-sys-shape-corner-large);
+  background: var(--md-sys-color-surface-container-high);
+  color: var(--md-sys-color-on-surface);
+  box-shadow: var(--md-sys-elevation-level3);
+  animation: byou-creator-menu-enter 320ms var(--md-sys-motion-easing-standard) both;
+}
+body #app .ops-creator-popover .button,
+body #overlay-root .ops-creator-popover .button,
+body #campaign-operations-overlay .ops-creator-popover .button {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  min-width: 0;
+  min-height: 44px;
+  padding: var(--md-sys-spacing-2) var(--md-sys-spacing-3);
+  border: 1px solid transparent;
+  border-radius: var(--md-sys-shape-corner-small);
+  background: transparent;
+  color: var(--md-sys-color-on-surface);
+  text-align: left;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+body #app .ops-creator-popover .button:hover:not(:disabled),
+body #overlay-root .ops-creator-popover .button:hover:not(:disabled),
+body #campaign-operations-overlay .ops-creator-popover .button:hover:not(:disabled) {
+  border-color: transparent;
+  background: var(--md-sys-color-surface-container-highest);
+  color: var(--md-sys-color-on-surface);
+}
+body #app .ops-creator-popover .button:active:not(:disabled),
+body #overlay-root .ops-creator-popover .button:active:not(:disabled),
+body #campaign-operations-overlay .ops-creator-popover .button:active:not(:disabled) {
+  background: var(--md-sys-state-pressed);
+  transform: none;
+}
+@keyframes byou-creator-menu-enter {
+  from { opacity: 0; transform: translateY(-4px) scale(.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* Button feedback acknowledges input without shifting surrounding layout. */
+body :is(#app, #overlay-root, #campaign-operations-overlay) button:not(:disabled) {
+  transition-property: background-color, border-color, color, box-shadow, transform;
+  transition-duration: var(--md-sys-motion-duration-short);
+  transition-timing-function: var(--md-sys-motion-easing-standard);
+}
+body :is(#app, #overlay-root, #campaign-operations-overlay) button:active:not(:disabled) {
+  transform: scale(.985);
+}
+@media (max-width: 720px) {
+  body #app .cl-history-filters { grid-template-columns: minmax(0, 1fr); }
+  body #app .cl-history-filters > button { justify-self: stretch; }
+  body #app .cl-brand-filters .cl-filter-toggle { align-items: flex-start; }
+  body #app .cl-brand-filters .cl-filter-toggle small { text-align: left; }
+  body #app .cl-result-bar { justify-content: flex-start; }
+  body #app .cl-result-bar .cl-sort { flex-wrap: wrap; max-width: 100%; }
+  body #app .cl-result-bar .cl-sort select { width: 100%; }
+}
+@media (pointer: coarse) {
+  body #app .cl-history-filters > button,
+  body #app .cl-history-filters select { min-height: 48px; }
+  body #app .cl-brand-options label { min-height: 48px; }
+}
+@media (pointer: coarse), (max-width: 720px) {
+  body #app .cl-brand-filters .cl-filter-toggle,
+  body #app .cl-history-filters > button,
+  body #app .cl-history-filters select,
+  body :is(#app, #overlay-root, #campaign-operations-overlay) .ops-creator-popover .button {
+    min-height: 48px;
+  }
+}
+
+/* Transparent brand vectors sit beside their platform labels. */
+body #app .social-brand-icon { display: inline-block; width: 18px; height: 18px; min-width: 18px; flex: 0 0 18px; vertical-align: -3px; color: currentColor; background: none; }
+body #app :is(.social-platform-label,.cl-platform) { display: inline-flex; align-items: center; gap: 6px; }
+body #app .cl-preview-fallback .social-brand-icon { width: 28px; height: 28px; }
+body #app .cl-post-platform { display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px; }
+body #app .cl-post-platform .social-brand-icon { width: 14px; height: 14px; min-width: 14px; flex-basis: 14px; }
+
+/* Selection-only campaign tray: centered content and contained campaign rows. */
+body #app .ops-creator-layout:not(:has(> .ops-campaign-tray)) { grid-template-columns:minmax(0,1fr); }
+body #app .ops-campaign-tray .ops-campaign-tray-body { justify-items:center; text-align:center; }
+body #app .ops-campaign-tray :is(.ops-campaign-create,.ops-campaign-clear) { justify-self:center; }
+body #app .ops-campaign-tray .ops-drop-targets { width:100%; box-sizing:border-box; grid-auto-rows:max-content; border:0; border-radius:0; padding:0; gap:0; background:transparent; }
+body #app .ops-campaign-tray .button.ops-drop-target { box-sizing:border-box; width:100%; height:auto; min-height:64px; flex-shrink:0; padding:16px 12px; gap:6px; border:0; border-bottom:2px solid var(--md-sys-color-primary); border-radius:0; text-align:center; align-items:center; justify-content:center; white-space:normal; line-height:1.5; }
+body #app .ops-campaign-tray .ops-drop-target :is(strong,small) { max-width:100%; height:auto; white-space:normal; overflow-wrap:anywhere; text-align:center; }
+body #app .ops-campaign-tray[data-tray-enter] { transform-origin:top center; animation:byou-botanical-fade-in var(--md-sys-motion-duration-standard,180ms) var(--byou-motion-effects-easing) both, byou-botanical-pop-in var(--md-sys-motion-duration-overlay,250ms) var(--byou-motion-spring-default) both; }
+@media(prefers-reduced-motion:reduce) { body #app .ops-campaign-tray[data-tray-enter] { animation:none; } }
+
+body #app .ops-campaign-tray .ops-drop-target:first-child { border-top:2px solid var(--md-sys-color-primary); }
+body #app .ops-campaign-tray .ops-drop-target:last-child { border-bottom:0; }
+body #app .ops-campaign-tray .ops-drop-targets { scrollbar-color:var(--md-sys-color-primary) transparent; }
+body #app .ops-campaign-tray .ops-drop-targets::-webkit-scrollbar { width:8px; }
+body #app .ops-campaign-tray .ops-drop-targets::-webkit-scrollbar-track { background:transparent; }
+body #app .ops-campaign-tray .ops-drop-targets::-webkit-scrollbar-thumb { background:var(--md-sys-color-primary); border-radius:var(--md-sys-shape-corner-full); }
+
+/* Drag-over uses the shaded surface; retain only the normal row dividers. */
+body #app .ops-campaign-tray .button.ops-drop-target.is-drop-target { outline:none; box-shadow:none; }
