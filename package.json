@@ -1,8 +1,21 @@
 {
- "name":"byou-iq-sample",
- "version":"1.0.0",
- "private":true,
- "type":"module",
- "engines":{"node":">=22"},
- "scripts":{"start":"node server.mjs","test":"node --test tests/*.test.mjs","check":"node scripts/check.mjs && npm test"}
+  "name": "byou-iq-sample",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "start": "node server.mjs",
+    "test": "node --test tests/*.test.mjs",
+    "check": "node scripts/check.mjs && npm test",
+    "build:vendor": "node scripts/build-vendor.mjs",
+    "audit:security": "npm audit --audit-level=low"
+  },
+  "devDependencies": {
+    "@material/web": "2.5.0",
+    "fflate": "0.8.3",
+    "esbuild": "0.28.2"
+  }
 }
