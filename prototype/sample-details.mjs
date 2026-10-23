@@ -24,6 +24,8 @@ export function sampleProfile(creator,index) {
     published_at:`2026-0${7+j}-18T16:00:00Z`,metrics:[{code:'views',value:12000+index*1700+j*3200,observedAt:'2026-10-20T12:00:00Z'},{code:'likes',value:480+index*70+j*100,observedAt:'2026-10-20T12:00:00Z'}]}));
   return {...creator,canEdit:true,brands:['Lumen Grove','Fieldnote'],history,historyCount:history.length,posts,
     relationships:pastCampaigns.map(c=>({campaignId:c.id,campaignName:c.name,campaignType:c.type,brand:c.brand,brandKey:c.brand,brandName:c.brand,stage:'delivered'})),
+    latestCollaboration:{campaignName:history[1].campaign_name,postedAt:posts[1].published_at,amount:history[1].agreed_fee,currency:'USD'},
+    latestFeeRecord:{amount:history[1].agreed_fee,currency:'USD'},
     collaborationTypes:['paid'],coverage:{verifiedPosts:posts.length},portfolioPosts:[],sourcePackages:[],agency:null,
     bio:'Skincare and lifestyle routines with practical product demonstrations.',
     accounts:creator.accounts.map(a=>({...a,avgViews:13600+index*1700,engagementRate:3.1+index%6*.2})),

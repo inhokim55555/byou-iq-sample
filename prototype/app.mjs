@@ -2322,7 +2322,9 @@ const writeLibraryRoute=(id=null,push=false)=>window.history[push?'pushState':'r
 const loadCreatorLibrary = async ({offset=0,creatorId=null,interpret=false,background=false}={}) => {
   if (!isLiveMode() && !state.runtime.creatorProfilePreview) {
     const s=state.creatorLibrary;
-    const items=campaignOps.demoCreators.filter(c=>(!s.emailAvailability||c.hasEmail===(s.emailAvailability==='has_email'))&&(!s.query||[c.displayName,...c.accounts.map(a=>a.handle)].join(' ').toLowerCase().includes(s.query.toLowerCase()))&&(!s.platform||c.accounts.some(a=>a.platform===s.platform)));
+    const roster=campaignOps.demoCreators;
+    s.filters={brands:[...new Set(roster.flatMap(c=>c.brands||[]))].map(name=>({key:name,name})),campaigns:[...new Map(roster.flatMap(c=>(c.relationships||[]).map(r=>[r.campaignId,{id:r.campaignId,name:r.campaignName,brandKey:r.brandKey}]))).values()]};
+    const items=roster.filter(c=>(!s.emailAvailability||c.hasEmail===(s.emailAvailability==='has_email'))&&(!s.query||[c.displayName,...c.accounts.map(a=>a.handle)].join(' ').toLowerCase().includes(s.query.toLowerCase()))&&(!s.platform||c.accounts.some(a=>a.platform===s.platform))&&(!s.collaboration||(c.collaborationTypes||[]).includes(s.collaboration))&&(!s.brands.length||s.brands.every(b=>(c.brands||[]).includes(b)))&&(!s.campaign||(c.relationships||[]).some(r=>r.campaignId===s.campaign))&&(!s.stage||(c.relationships||[]).some(r=>r.stage===s.stage)));
     s.total=items.length;s.offset=offset;s.items=items.slice(offset,offset+s.limit);
     s.selected=creatorId?campaignOps.demoCreators.find(c=>c.id===creatorId)||null:null;s.sample=true;s.demo=true;
     render();return;
