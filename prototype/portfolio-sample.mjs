@@ -1,12 +1,11 @@
 import {createOperationsDemoStore} from './campaign-operations-model.mjs';
-const key='portfolio_iq_creators',intakeKey='portfolio_iq_intake';
+import {pastCampaigns} from './sample-details.mjs';
+const key='portfolio_iq_creators_v2',intakeKey='portfolio_iq_intake';
 const read=(k,fallback=[])=>{try{return JSON.parse(localStorage.getItem(k))||fallback;}catch{return fallback;}};
 const write=(k,v)=>localStorage.setItem(k,JSON.stringify(v));
 function profiles(){
   let rows=read(key);if(rows.length)return rows;
-  rows=createOperationsDemoStore().creators.map((c,i)=>({...c,canEdit:true,brands:['Lumen Grove'],history:[],historyCount:0,coverage:{verifiedPosts:0},portfolioPosts:[],sourcePackages:[],paymentObligations:[],agency:null,bio:'Fictional skincare and lifestyle creator.',email:c.email,accounts:c.accounts.map(a=>({...a,avgViews:5400+i*900,engagementRate:3.1+i*.2}))}));
-  const names=['Owen Brook','Lena Reed','Emery Shore','Iris Maple','Finn Alder','Sage Bell','Milo Frost','Zoe Clover','Remy Lane','Eden Moss','Luca Fern','Ada Birch'];
-  rows.push(...names.map((displayName,i)=>({id:crypto.randomUUID(),displayName,code:'SAMPLE-'+(i+7),categories:['Beauty','Lifestyle'],email:displayName.toLowerCase().replace(' ','.')+'@example.invalid',hasEmail:true,canEdit:true,accounts:[{platform:i%2?'tiktok':'instagram',handle:'@portfolio_sample_'+(i+7),followers:14000+i*3700,url:null}],brands:[],history:[],historyCount:0,posts:[],portfolioPosts:[],sourcePackages:[],paymentObligations:[],coverage:{verifiedPosts:0}})));
+  rows=createOperationsDemoStore().creators;
   write(key,rows);return rows;
 }
 export async function portfolioRequest(raw,{method,body}={}){
@@ -25,7 +24,7 @@ export async function portfolioRequest(raw,{method,body}={}){
     if(p.get('costcoOnly')==='true')rows=rows.filter(c=>c.costcoCreator);
     if(p.get('campaign')||p.get('stage'))rows=rows.filter(c=>(c.relationships||[]).some(r=>(!p.get('campaign')||r.campaignId===p.get('campaign'))&&(!p.get('stage')||r.stage===p.get('stage'))));
     const total=rows.length,offset=Number(p.get('offset')||0),limit=Number(p.get('limit')||24);
-    return {data:{items:rows.slice(offset,offset+limit),total,source:'portfolio_local',filters:{brands:['Lumen Grove','Tidewell','Fieldnote'],campaigns:[]},capturedAt:new Date().toISOString()}};
+    return {data:{items:rows.slice(offset,offset+limit),total,source:'portfolio_local',filters:{brands:['Lumen Grove','Fieldnote'].map(name=>({key:name,name})),campaigns:pastCampaigns.map(c=>({id:c.id,name:c.name}))},capturedAt:new Date().toISOString()}};
   }
   if(path==='/api/creator-library/fee-reviews')return {data:[]};
   if(path==='/api/creator-intake'){

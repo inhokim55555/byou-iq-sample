@@ -1,6 +1,7 @@
 // Calendar and sample-state helpers shared by the operations controller and tests.
 // The sample store is memory-only and is never used in a connected workspace.
 import {readAssignmentEditableFields,DELIVERABLE_PUBLICATION_KEYS} from './assignment-details-fields.mjs';
+import {enrichOperations} from './sample-details.mjs';
 import {financeThursday,nextPaymentWeek,financeTotals,filterFinances,assignmentPublications,financeShares} from './finance-batches.mjs';
 export function net30Date(value) {
   if (!value) return null;
@@ -183,7 +184,7 @@ export function buildShipmentImportCommand(assignment,previewRow,idempotencyKey)
 }
 
 export function createOperationsDemoStore() {
-  const creatorNames = ["Maya Linden","Theo Vale","Nora Finch","Eli Rowan","Zoe Hart","Owen Reed"];
+  const creatorNames = ["Maya Linden","Theo Vale","Nora Finch","Eli Rowan","Zoe Hart","Owen Reed","Owen Brook","Lena Reed","Emery Shore","Iris Maple","Finn Alder","Sage Bell","Milo Frost","Zoe Clover","Remy Lane","Eden Moss","Luca Fern","Ada Birch"];
   const creators = creatorNames.map((displayName, i) => ({id: uuid(100+i), displayName, code: `SAMPLE-${i+1}`,
     categories: ['Skincare', 'Lifestyle'], accounts: [{platform: i % 2 ? 'tiktok' : 'instagram', handle: `@sample_${i+1}`, followers: 18000+i*7400, url: null}],
     email:displayName.toLowerCase().replace(' ','.')+'@example.invalid',hasEmail:true, posts: [], history: [], historyCount: 0, coverage: {verifiedPosts: 0}}));
@@ -211,7 +212,8 @@ export function createOperationsDemoStore() {
     shipment: {requested: i === 2 || i === 3, fullName: i === 3 ? creator.displayName : '', address: i === 3 ? 'Sample address — replace before shipping' : '',
       productName: 'Daily Cream', brand: 'Lumen Grove', carrier: '', trackingNumber: '', status: 'unknown', sourceUrl: null, checkedAt: null}
   }));
-  const replies=[{id:uuid(800),campaignId:uuid(1),assignmentId:assignments[0].id,creatorId:assignments[0].creatorId,creatorDisplayName:assignments[0].creatorDisplayName,kind:'review',status:'open',lastCreatorCorrespondenceAt:'2026-10-11T16:30:00Z',replyTranslation:{ko:{summary:'Avery가 배송 정보를 보내 왔으며 샘플 발송을 기다리고 있습니다.',nextStep:'배송 요청에 주소를 입력한 뒤 배송팀에 전달하세요.'}},summary:'Avery sent the delivery details and is ready for us to send the sample.',nextStep:'Add the address to the shipment request, then pass it to the shipping team.',sourceUrl:null,canEdit:true},
+  enrichOperations(creators,campaigns,assignments);
+  const replies=[{id:uuid(800),campaignId:uuid(1),assignmentId:assignments[0].id,creatorId:assignments[0].creatorId,creatorDisplayName:assignments[0].creatorDisplayName,kind:'review',status:'open',lastCreatorCorrespondenceAt:'2026-10-11T16:30:00Z',replyTranslation:{ko:{summary:'Maya가 배송 정보를 보내 왔으며 샘플 발송을 기다리고 있습니다.',nextStep:'배송 요청에 주소를 입력한 뒤 배송팀에 전달하세요.'}},summary:'Maya sent the delivery details and is ready for us to send the sample.',nextStep:'Add the address to the shipment request, then pass it to the shipping team.',sourceUrl:null,canEdit:true},
     {id:uuid(801),campaignId:uuid(1),assignmentId:assignments[1].id,creatorId:assignments[1].creatorId,creatorDisplayName:assignments[1].creatorDisplayName,kind:'review',status:'open',lastCreatorCorrespondenceAt:'2026-10-10T18:00:00Z',replyTranslation:{ko:{summary:'Blair가 관심을 보였으나 콘텐츠 사용 조건은 아직 협의 중입니다.',nextStep:'제시한 금액에 30일간의 광고 사용권을 포함할 수 있는지 확인하세요.'}},summary:'Blair is interested, but the usage terms are still open.',nextStep:'Ask whether 30 days of paid usage can be included in the quoted rate.',sourceUrl:null,canEdit:true}];
   const automations=new Map();
   for(let i=2;i<6;i++)replies.push({id:uuid(800+i),campaignId:uuid(1),assignmentId:assignments[i].id,creatorId:assignments[i].creatorId,creatorDisplayName:assignments[i].creatorDisplayName,kind:'review',status:'open',lastCreatorCorrespondenceAt:'2026-10-10T18:00:00Z',replyTranslation:{ko:{summary:'가능한 일정을 보내 왔으며 캠페인 안내를 기다리고 있습니다.',nextStep:'캠페인 안내를 전달하고 초안 제출일을 확인하세요.'}},summary:'They sent their availability and are waiting for the campaign brief.',nextStep:'Share the brief and confirm the draft date.',canEdit:true});
@@ -429,10 +431,10 @@ export function createOperationsDemoStore() {
       ]};
   }
   const storage=globalThis.localStorage;
-  const key='portfolio_iq_operations_v1';
+  const key='portfolio_iq_operations_v2';
   try {const saved=JSON.parse(storage?.getItem(key)||'null');if(saved){sequence=saved.sequence;for(const [target,source] of [[campaigns,saved.campaigns],[assignments,saved.assignments],[replies,saved.replies]])target.splice(0,target.length,...source);for(const [target,source] of [[automations,saved.automations],[receipts,saved.receipts],[unpaidSnapshots,saved.unpaidSnapshots],[batchReviews,saved.batchReviews],[delaySchedules,saved.delaySchedules]])for(const [k,v] of source||[])target.set(k,v);}}catch{}
   const persist=()=>storage?.setItem(key,JSON.stringify({sequence,campaigns,assignments,replies,automations:[...automations],receipts:[...receipts],unpaidSnapshots:[...unpaidSnapshots],batchReviews:[...batchReviews],delaySchedules:[...delaySchedules]}));
-  const syncCreators=()=>{try{for(const creator of JSON.parse(storage?.getItem('portfolio_iq_creators')||'[]'))if(!creators.some(c=>c.id===creator.id))creators.push(creator);}catch{}};
+  const syncCreators=()=>{try{for(const creator of JSON.parse(storage?.getItem('portfolio_iq_creators_v2')||'[]'))if(!creators.some(c=>c.id===creator.id))creators.push(creator);}catch{}};
   const write=fn=>(...args)=>{syncCreators();const result=fn(...args);persist();return result;};
   persist();
   return {managerChoices:()=>clone(managers),read:(...args)=>{syncCreators();return read(...args);},command:write(command),batchCommand:write(batchCommand),conversation,confirmPayment:write(confirmPayment),undoPayment:write(undoPayment),get creators(){syncCreators();return clone(creators);}};
